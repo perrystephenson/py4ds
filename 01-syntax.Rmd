@@ -1,0 +1,236 @@
+# Base Syntax {#syntax}
+
+This chapter will cover the basics of **Base Python**, that is the syntax of 
+the Python Interpreter without any non-bundled packages.
+
+<div class="alert alert-info">
+<strong>Note</strong>
+<p>Python does not automatically print the result of expressions. They must 
+always be wrapped in a `print()` function call if you want them to be printed
+to the standard output.
+</div>
+
+## Types
+
+**Python** is "dynamically typed" which means that it can automatically infer
+the types of variables, and these types can change throughout the course of
+your script. This is similar to **R**, but very different to **C**.
+
+To see the type of an object in Python, use `type(var)`.
+
+```{python}
+x = 0.5
+print(type(x))
+```
+
+## Comments
+
+Comments start with the hash `#`, just like in R and Bash. You can also use
+**docstrings** as the first statement inside a function - this is written like
+a multi-line comment which becomes the documentation for the function. 
+
+```
+# This is a comment
+
+"""This is a 
+multi-line docstring
+"""
+```
+
+## Basic Operations
+
+The standard operators are pretty straightforward (`*`, `/`, `+`, `-`),
+exponentiation is `**` (i.e. `4**2`) instead of `^`. Assignment is `=` and 
+function arguments are also passed via `=`. Equality tests use `==`.
+
+```{python}
+print(2**2 == 4)
+print(2 == 3)
+```
+
+## Strings
+
+Python accepts both single `'` and double `"` quotes. You can concatenate
+strings using the + operator - cool! Python does not automatically cast between
+strings and other types (booooooo) which means you have to cast it explicitly
+when you want to build error messages, turn strings into numeric types, etc.
+
+```{python}
+x = 0.75
+msg = 'The value of x is ' + str(x)
+print(msg)
+```
+
+## Lists / Arrays / Columns / Vectors
+
+In **R**, if you define something using the inline notation `c(1.73, 1.68,
+1.71, 1.89)` then you are creating an "atomic vector" (i.e. a vector containing
+only one type of data). In **Python**, if you define something using the inline
+notation [1.73, 1.68, 1.71, 1.89] then are creating a "list". "List" seems to
+have the same meaning as R (can contain multiple types, can contain other
+lists, etc), so it is just the notation that differs. There is no base
+equivalent to the atomic vector in Python - it seems that this functionality is
+provided by the **NumPy Array**.
+
+## Indexing
+
+**Python** uses 0-based indexing, whereas **R** uses 1-based indexing. If you
+want to select the 4th element in a vector, you would use index 4 in R
+(1,2,3,4), but index 3 in Python (0,1,2,3). The syntax for this in Python is
+the same as R - `var[3]`.
+
+Negative indices work very differently! In **R**, a negative index will return
+the vector with the specified item removed i.e. if you use `var[-3]` then you
+will get the vector without the third element. In **Python** however, it will
+select a single element by counting backwards. An index of `-1` returns the
+final element (because you start at index zero and take one step backwards),
+`-2` returns the second last element, and so on.
+
+Slicing works even more strangely in Python. Whilst in **R**, using index
+`var[3:5]` will return the 3rd, 4th and 5th elements, in **Python** this will
+only return the 4th and 5th elements. This is because the syntax in Python is
+[inclusive:exclusive] and because of 0-based indexing.
+
+One nice shortcut in **Python** (not present in **R**) is the `[:n]` and `[n:]`
+syntax. In the first case, the blank argument to the infix operator `:` is
+interpreted as a 0, and in the second case the blank argument is interpreted as
+the length of the vector (so that it will select the rest of the vector).
+
+Python lists can be joined using the + operator. 
+
+```{python}
+example = [0,1,2] + [3,4]
+print(example)
+```
+
+Deleting elements is a bit different - you need to use `del(var[3])` to remove
+an element from the list.
+
+```{python}
+del(example[3])
+print(example)
+```
+
+## Copy / Modify
+
+**R** has a nice "copy on modify" behaviour, which means that when you assign a
+list (or anything else) to a new variable, it doesn't copy it until you make a
+change, at which point it saves a modified copy of that object. In **Python**
+however, the behaviour is different for different data types (booooooo). Lists,
+for example, are copied by reference, which means that changing an element in a
+"copied" list also changes the same element in the original list. To get around
+this you need to do something like y = list(x) or y = x[:] to explicitly copy
+all items from the list.
+
+```{python}
+x = [1,2,3,4]
+y = x
+y[2] = 5
+print(x)
+```
+
+```{python}
+x = [1,2,3,4]
+y = list(x); y[2] = 5
+z = x[:]; z[2] = 5
+print(x)
+```
+
+## Grouping
+
+Python does not use braces - it uses indentation to group blocks of code. This
+is supposed to improve readability, but in practice it can be super messy. Can
+use spaces or tabs.
+
+```
+if condition :
+    execute this
+    and this because we're still indented
+execute this regardless because we've got no indent
+```
+
+## Missing values and extreme numbers
+
+In **R**, you have `NA` (missing) and `NULL` (undefined, empty), `NaN` (not a
+number), and `Inf` (infinity). In **Python**, you have `None`, and numpy has
+`numpy.nan` (not a number). There is no equivalent to `Inf`, as it just raises
+an error.
+
+## Booleans
+
+In **R**, booleans are defined as `TRUE` and `FALSE`, with the shortcut `T` and
+`F` also commonly used. In **Python**, the booleans are simply defined as
+`True` and `False`.
+
+Boolean arithmetic is performed using the `and` and `or` keywords,
+corresponding to the `&` and `|` operators in R. You can also use the `not`
+operator, which corresponds to `!` in R.
+
+Booleans are a bit harder to work with when you're using numpy arrays, because
+the base logic keywords are not vectorised. To work with numpy arrays, you have
+to use the built in numpy functions:
+
+```
+np.logical_and()
+np.locical_or()
+np.locical_not()
+```
+
+## Dictionaries
+
+Dictionaries don't really exist in **R**, because the dictionary functionality
+(named elements) is available in both atomic vectors and lists. To create a
+dictionary in **Python**, you can use the following syntax:
+
+```
+world = {"afghanistan":30.55, "albania":2.77, "algeria":39.21}
+```
+
+You can also do nested dictionaries - the keys are somewhat limited (they can
+be any immutable data type) but the values can be dictionaries if you want.
+
+## Functions
+
+Functions are defined using the keyword def, like so:
+
+```{python}
+def repeat(s, exclaim):
+  """
+  Returns the string 's' repeated 3 times.
+  If exclaim is true, add exclamation marks.
+  """
+
+  result = s + s + s 
+  if exclaim:
+    result = result + '!!!'
+  return result
+
+print(repeat('ha', exclaim = True))
+```
+
+A return statement appears to be compulsory in Python functions, unlike in R
+where it is not strictly required. Like in all other scripting languages,
+functions must be defined before they are used (i.e. earlier in the script).
+Importing modules is probably a sensible way to manage this.
+
+Function arguments look to be specified and evaluated similarly to R - you name
+the arguments and you can give them default values in the definition statement.
+When using the function you can resolve arguments by name or by order (but you
+cannot mix the two approaches), and there is no partial matching.
+
+## Methods
+
+**Python** is a proper object-oriented (OO) language, unlike **R** which is a
+functional language with three different OO systems built on top of it. The
+Python model for objects and methods is most similar to R's Reference Classes
+(RC) framework. In Python, methods belong to objects (you invoke them using
+object.method() notation), and behave according to the type of the object. Some
+methods can mutate the object they belong to, others do not, and there is no
+easy way to tell the difference without reading the documentation.
+
+## Namespaces
+
+If you have a module called binky.py and a function in that module called foo()
+then the fully qualified function name is binky.foo(). This is sort of like R's
+:: notation (e.g. dplyr::select()) except that Python modules seem to typically
+be more light weight than R packages. 

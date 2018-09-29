@@ -1,0 +1,48 @@
+# Scripting
+
+## Imports
+
+If you import a module using `import sys`, then you make the functions from sys
+available in your code using their fully qualified function names, e.g.
+sys.argv and sys.exit(). This is different to R, where using the library()
+function makes functions available using their short names, e.g. after calling
+library(dplyr) you can just call select(). To get this sort of behaviour in
+Python, some people use `from sys import argv`, exit which makes specified
+functions available using their short names. In general though, it makes sense
+to use fully qualified names unless they're really long, in the same way that
+it makes sense to use functions in R using the :: notation.
+
+To save you a bit of typing, you can rename the imported packages using the
+`import <package> as <shortcut>` syntax, e.g. `import numpy as np`. Going
+further, you can even do things like `from numpy import array as np_array` to
+import specific functions and rename them all in one step.
+
+Python has a "standard library" of imports available, just like R. Some
+examples include **sys**, **re** and **os**.
+
+You can also import constants from packages - e.g. **math.pi**.
+
+Some important imports include: **numpy**, **matplotlib**, **pandas**.
+
+## Boilerplate
+
+```
+#!/usr/bin/env python
+
+import sys
+
+def main():
+  print('Hello there', sys.argv[1])
+
+if __name__ == '__main__':
+    main()
+```
+
+In this example:
+
+* the shebang will use the correct Python conda environment (based on whichever
+  conda env is active when the script is executed)
+* the package imports are included at the top of the file
+* the **main()** function is the part of the code that should run when you
+  execute the script from the command line
+* The strange thing at the end calls the **main()** function
