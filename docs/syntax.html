@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Python for Data Science</title>
+  <meta name="description" content="Python for Data Science">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Python for Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Python for Data Science" />
+  
+  
+  
+
+<meta name="author" content="Perry Stephenson">
+
+
+<meta name="date" content="2018-09-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="control-flow.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Python for Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-python"><i class="fa fa-check"></i><b>1.1</b> What is Python?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#setting-up-python"><i class="fa fa-check"></i><b>1.2</b> Setting up Python</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="syntax.html"><a href="syntax.html"><i class="fa fa-check"></i><b>2</b> Base Syntax</a><ul>
+<li class="chapter" data-level="2.1" data-path="syntax.html"><a href="syntax.html#types"><i class="fa fa-check"></i><b>2.1</b> Types</a></li>
+<li class="chapter" data-level="2.2" data-path="syntax.html"><a href="syntax.html#comments"><i class="fa fa-check"></i><b>2.2</b> Comments</a></li>
+<li class="chapter" data-level="2.3" data-path="syntax.html"><a href="syntax.html#basic-operations"><i class="fa fa-check"></i><b>2.3</b> Basic Operations</a></li>
+<li class="chapter" data-level="2.4" data-path="syntax.html"><a href="syntax.html#strings"><i class="fa fa-check"></i><b>2.4</b> Strings</a></li>
+<li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#lists-arrays-columns-vectors"><i class="fa fa-check"></i><b>2.5</b> Lists / Arrays / Columns / Vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#indexing"><i class="fa fa-check"></i><b>2.6</b> Indexing</a></li>
+<li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#copy-modify"><i class="fa fa-check"></i><b>2.7</b> Copy / Modify</a></li>
+<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#grouping"><i class="fa fa-check"></i><b>2.8</b> Grouping</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#missing-values-and-extreme-numbers"><i class="fa fa-check"></i><b>2.9</b> Missing values and extreme numbers</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#booleans"><i class="fa fa-check"></i><b>2.10</b> Booleans</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#dictionaries"><i class="fa fa-check"></i><b>2.11</b> Dictionaries</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#functions"><i class="fa fa-check"></i><b>2.12</b> Functions</a></li>
+<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#methods"><i class="fa fa-check"></i><b>2.13</b> Methods</a></li>
+<li class="chapter" data-level="2.14" data-path="syntax.html"><a href="syntax.html#namespaces"><i class="fa fa-check"></i><b>2.14</b> Namespaces</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>3</b> Control Flow</a><ul>
+<li class="chapter" data-level="3.1" data-path="control-flow.html"><a href="control-flow.html#if-statements"><i class="fa fa-check"></i><b>3.1</b> If statements</a></li>
+<li class="chapter" data-level="3.2" data-path="control-flow.html"><a href="control-flow.html#while-loop"><i class="fa fa-check"></i><b>3.2</b> While loop</a></li>
+<li class="chapter" data-level="3.3" data-path="control-flow.html"><a href="control-flow.html#for-loop"><i class="fa fa-check"></i><b>3.3</b> For loop</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>4</b> Scripting</a><ul>
+<li class="chapter" data-level="4.1" data-path="scripting.html"><a href="scripting.html#imports"><i class="fa fa-check"></i><b>4.1</b> Imports</a></li>
+<li class="chapter" data-level="4.2" data-path="scripting.html"><a href="scripting.html#boilerplate"><i class="fa fa-check"></i><b>4.2</b> Boilerplate</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html"><i class="fa fa-check"></i><b>5</b> Numpy (Numeric Python)</a><ul>
+<li class="chapter" data-level="5.1" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#numpy-arrays"><i class="fa fa-check"></i><b>5.1</b> Numpy arrays</a></li>
+<li class="chapter" data-level="5.2" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#two-dimensional-numpy-arrays"><i class="fa fa-check"></i><b>5.2</b> Two dimensional numpy arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>6</b> Pandas</a><ul>
+<li class="chapter" data-level="6.1" data-path="pandas.html"><a href="pandas.html#creation"><i class="fa fa-check"></i><b>6.1</b> Creation</a></li>
+<li class="chapter" data-level="6.2" data-path="pandas.html"><a href="pandas.html#subsetting"><i class="fa fa-check"></i><b>6.2</b> Subsetting</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Python for Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="syntax" class="section level1">
+<h1><span class="header-section-number">2</span> Base Syntax</h1>
+<p>This chapter will cover the basics of <strong>Base Python</strong>, that is the syntax of the Python Interpreter without any non-bundled packages.</p>
+<div class="alert alert-info">
+<strong>Note</strong>
+<p>
+Python does not automatically print the result of expressions. They must always be wrapped in a <code>print()</code> function call if you want them to be printed to the standard output.
+</div>
+<div id="types" class="section level2">
+<h2><span class="header-section-number">2.1</span> Types</h2>
+<p><strong>Python</strong> is “dynamically typed” which means that it can automatically infer the types of variables, and these types can change throughout the course of your script. This is similar to <strong>R</strong>, but very different to <strong>C</strong>.</p>
+<p>To see the type of an object in Python, use <code>type(var)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="fl">0.5</span>
+<span class="bu">print</span>(<span class="bu">type</span>(x))</code></pre></div>
+<pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
+</div>
+<div id="comments" class="section level2">
+<h2><span class="header-section-number">2.2</span> Comments</h2>
+<p>Comments start with the hash <code>#</code>, just like in R and Bash. You can also use <strong>docstrings</strong> as the first statement inside a function - this is written like a multi-line comment which becomes the documentation for the function.</p>
+<pre><code># This is a comment
+
+&quot;&quot;&quot;This is a 
+multi-line docstring
+&quot;&quot;&quot;</code></pre>
+</div>
+<div id="basic-operations" class="section level2">
+<h2><span class="header-section-number">2.3</span> Basic Operations</h2>
+<p>The standard operators are pretty straightforward (<code>*</code>, <code>/</code>, <code>+</code>, <code>-</code>), exponentiation is <code>**</code> (i.e. <code>4**2</code>) instead of <code>^</code>. Assignment is <code>=</code> and function arguments are also passed via <code>=</code>. Equality tests use <code>==</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">4</span>)</code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="dv">2</span> <span class="op">==</span> <span class="dv">3</span>)</code></pre></div>
+<pre><code>## False</code></pre>
+</div>
+<div id="strings" class="section level2">
+<h2><span class="header-section-number">2.4</span> Strings</h2>
+<p>Python accepts both single <code>'</code> and double <code>&quot;</code> quotes. You can concatenate strings using the + operator - cool! Python does not automatically cast between strings and other types (booooooo) which means you have to cast it explicitly when you want to build error messages, turn strings into numeric types, etc.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> <span class="fl">0.75</span>
+msg <span class="op">=</span> <span class="st">&#39;The value of x is &#39;</span> <span class="op">+</span> <span class="bu">str</span>(x)
+<span class="bu">print</span>(msg)</code></pre></div>
+<pre><code>## The value of x is 0.75</code></pre>
+</div>
+<div id="lists-arrays-columns-vectors" class="section level2">
+<h2><span class="header-section-number">2.5</span> Lists / Arrays / Columns / Vectors</h2>
+<p>In <strong>R</strong>, if you define something using the inline notation <code>c(1.73, 1.68, 1.71, 1.89)</code> then you are creating an “atomic vector” (i.e. a vector containing only one type of data). In <strong>Python</strong>, if you define something using the inline notation [1.73, 1.68, 1.71, 1.89] then are creating a “list”. “List” seems to have the same meaning as R (can contain multiple types, can contain other lists, etc), so it is just the notation that differs. There is no base equivalent to the atomic vector in Python - it seems that this functionality is provided by the <strong>NumPy Array</strong>.</p>
+</div>
+<div id="indexing" class="section level2">
+<h2><span class="header-section-number">2.6</span> Indexing</h2>
+<p><strong>Python</strong> uses 0-based indexing, whereas <strong>R</strong> uses 1-based indexing. If you want to select the 4th element in a vector, you would use index 4 in R (1,2,3,4), but index 3 in Python (0,1,2,3). The syntax for this in Python is the same as R - <code>var[3]</code>.</p>
+<p>Negative indices work very differently! In <strong>R</strong>, a negative index will return the vector with the specified item removed i.e. if you use <code>var[-3]</code> then you will get the vector without the third element. In <strong>Python</strong> however, it will select a single element by counting backwards. An index of <code>-1</code> returns the final element (because you start at index zero and take one step backwards), <code>-2</code> returns the second last element, and so on.</p>
+<p>Slicing works even more strangely in Python. Whilst in <strong>R</strong>, using index <code>var[3:5]</code> will return the 3rd, 4th and 5th elements, in <strong>Python</strong> this will only return the 4th and 5th elements. This is because the syntax in Python is [inclusive:exclusive] and because of 0-based indexing.</p>
+<p>One nice shortcut in <strong>Python</strong> (not present in <strong>R</strong>) is the <code>[:n]</code> and <code>[n:]</code> syntax. In the first case, the blank argument to the infix operator <code>:</code> is interpreted as a 0, and in the second case the blank argument is interpreted as the length of the vector (so that it will select the rest of the vector).</p>
+<p>Python lists can be joined using the + operator.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">example <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>] <span class="op">+</span> [<span class="dv">3</span>,<span class="dv">4</span>]
+<span class="bu">print</span>(example)</code></pre></div>
+<pre><code>## [0, 1, 2, 3, 4]</code></pre>
+<p>Deleting elements is a bit different - you need to use <code>del(var[3])</code> to remove an element from the list.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">del</span>(example[<span class="dv">3</span>])
+<span class="bu">print</span>(example)</code></pre></div>
+<pre><code>## [0, 1, 2, 4]</code></pre>
+</div>
+<div id="copy-modify" class="section level2">
+<h2><span class="header-section-number">2.7</span> Copy / Modify</h2>
+<p><strong>R</strong> has a nice “copy on modify” behaviour, which means that when you assign a list (or anything else) to a new variable, it doesn’t copy it until you make a change, at which point it saves a modified copy of that object. In <strong>Python</strong> however, the behaviour is different for different data types (booooooo). Lists, for example, are copied by reference, which means that changing an element in a “copied” list also changes the same element in the original list. To get around this you need to do something like y = list(x) or y = x[:] to explicitly copy all items from the list.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]
+y <span class="op">=</span> x
+y[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">5</span>
+<span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## [1, 2, 5, 4]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]
+y <span class="op">=</span> <span class="bu">list</span>(x)<span class="op">;</span> y[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">5</span>
+z <span class="op">=</span> x[:]<span class="op">;</span> z[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">5</span>
+<span class="bu">print</span>(x)</code></pre></div>
+<pre><code>## [1, 2, 3, 4]</code></pre>
+</div>
+<div id="grouping" class="section level2">
+<h2><span class="header-section-number">2.8</span> Grouping</h2>
+<p>Python does not use braces - it uses indentation to group blocks of code. This is supposed to improve readability, but in practice it can be super messy. Can use spaces or tabs.</p>
+<pre><code>if condition :
+    execute this
+    and this because we&#39;re still indented
+execute this regardless because we&#39;ve got no indent</code></pre>
+</div>
+<div id="missing-values-and-extreme-numbers" class="section level2">
+<h2><span class="header-section-number">2.9</span> Missing values and extreme numbers</h2>
+<p>In <strong>R</strong>, you have <code>NA</code> (missing) and <code>NULL</code> (undefined, empty), <code>NaN</code> (not a number), and <code>Inf</code> (infinity). In <strong>Python</strong>, you have <code>None</code>, and numpy has <code>numpy.nan</code> (not a number). There is no equivalent to <code>Inf</code>, as it just raises an error.</p>
+</div>
+<div id="booleans" class="section level2">
+<h2><span class="header-section-number">2.10</span> Booleans</h2>
+<p>In <strong>R</strong>, booleans are defined as <code>TRUE</code> and <code>FALSE</code>, with the shortcut <code>T</code> and <code>F</code> also commonly used. In <strong>Python</strong>, the booleans are simply defined as <code>True</code> and <code>False</code>.</p>
+<p>Boolean arithmetic is performed using the <code>and</code> and <code>or</code> keywords, corresponding to the <code>&amp;</code> and <code>|</code> operators in R. You can also use the <code>not</code> operator, which corresponds to <code>!</code> in R.</p>
+<p>Booleans are a bit harder to work with when you’re using numpy arrays, because the base logic keywords are not vectorised. To work with numpy arrays, you have to use the built in numpy functions:</p>
+<pre><code>np.logical_and()
+np.locical_or()
+np.locical_not()</code></pre>
+</div>
+<div id="dictionaries" class="section level2">
+<h2><span class="header-section-number">2.11</span> Dictionaries</h2>
+<p>Dictionaries don’t really exist in <strong>R</strong>, because the dictionary functionality (named elements) is available in both atomic vectors and lists. To create a dictionary in <strong>Python</strong>, you can use the following syntax:</p>
+<pre><code>world = {&quot;afghanistan&quot;:30.55, &quot;albania&quot;:2.77, &quot;algeria&quot;:39.21}</code></pre>
+<p>You can also do nested dictionaries - the keys are somewhat limited (they can be any immutable data type) but the values can be dictionaries if you want.</p>
+</div>
+<div id="functions" class="section level2">
+<h2><span class="header-section-number">2.12</span> Functions</h2>
+<p>Functions are defined using the keyword def, like so:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> repeat(s, exclaim):
+  <span class="co">&quot;&quot;&quot;</span>
+<span class="co">  Returns the string &#39;s&#39; repeated 3 times.</span>
+<span class="co">  If exclaim is true, add exclamation marks.</span>
+<span class="co">  &quot;&quot;&quot;</span>
+  result <span class="op">=</span> s <span class="op">+</span> s <span class="op">+</span> s 
+  <span class="cf">if</span> exclaim:
+    result <span class="op">=</span> result <span class="op">+</span> <span class="st">&#39;!!!&#39;</span>
+  <span class="cf">return</span> result
+<span class="bu">print</span>(repeat(<span class="st">&#39;ha&#39;</span>, exclaim <span class="op">=</span> <span class="va">True</span>))</code></pre></div>
+<pre><code>## hahaha!!!</code></pre>
+<p>A return statement appears to be compulsory in Python functions, unlike in R where it is not strictly required. Like in all other scripting languages, functions must be defined before they are used (i.e. earlier in the script). Importing modules is probably a sensible way to manage this.</p>
+<p>Function arguments look to be specified and evaluated similarly to R - you name the arguments and you can give them default values in the definition statement. When using the function you can resolve arguments by name or by order (but you cannot mix the two approaches), and there is no partial matching.</p>
+</div>
+<div id="methods" class="section level2">
+<h2><span class="header-section-number">2.13</span> Methods</h2>
+<p><strong>Python</strong> is a proper object-oriented (OO) language, unlike <strong>R</strong> which is a functional language with three different OO systems built on top of it. The Python model for objects and methods is most similar to R’s Reference Classes (RC) framework. In Python, methods belong to objects (you invoke them using object.method() notation), and behave according to the type of the object. Some methods can mutate the object they belong to, others do not, and there is no easy way to tell the difference without reading the documentation.</p>
+</div>
+<div id="namespaces" class="section level2">
+<h2><span class="header-section-number">2.14</span> Namespaces</h2>
+<p>If you have a module called binky.py and a function in that module called foo() then the fully qualified function name is binky.foo(). This is sort of like R’s :: notation (e.g. dplyr::select()) except that Python modules seem to typically be more light weight than R packages.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="control-flow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
