@@ -1,4 +1,4 @@
-# pandas
+# Pandas
 
 The pandas package was written by Wes McKinney (who seems to be _Hadley
 Wickham's_ counterpart for **Python**) and builds on top of the numpy package
