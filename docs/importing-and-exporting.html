@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="numpy-numeric-python.html">
-<link rel="next" href="visualisation.html">
+<link rel="prev" href="syntax.html">
+<link rel="next" href="control-flow.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -195,47 +195,103 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pandas" class="section level1">
-<h1><span class="header-section-number">7</span> Pandas</h1>
-<p>The pandas package was written by Wes McKinney (who seems to be <em>Hadley Wickham’s</em> counterpart for <strong>Python</strong>) and builds on top of the numpy package to provide DataFrames.</p>
-<div id="creation" class="section level2">
-<h2><span class="header-section-number">7.1</span> Creation</h2>
-<p>To create a DataFrame manually:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> pd
-<span class="bu">dict</span> <span class="op">=</span> {
-  <span class="st">&quot;country&quot;</span>:    [<span class="st">&#39;Brazil&#39;</span>,   <span class="st">&#39;Russia&#39;</span>, <span class="st">&#39;India&#39;</span>,     <span class="st">&#39;China&#39;</span>,   <span class="st">&#39;South Africa&#39;</span>],
-  <span class="st">&quot;capital&quot;</span>:    [<span class="st">&#39;Brasilia&#39;</span>, <span class="st">&#39;Moscow&#39;</span>, <span class="st">&#39;New Delhi&#39;</span>, <span class="st">&#39;Beijing&#39;</span>, <span class="st">&#39;Pretoria&#39;</span>    ],
-  <span class="st">&quot;area&quot;</span>:       [ <span class="fl">8.516</span>,      <span class="fl">17.10</span>,    <span class="fl">3.286</span>,       <span class="fl">9.597</span>,     <span class="fl">1.221</span>        ],
-  <span class="st">&quot;population&quot;</span>: [ <span class="fl">200.4</span>,      <span class="fl">143.5</span>,    <span class="dv">1252</span>,        <span class="dv">1357</span>,      <span class="fl">52.98</span>        ]}
-df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>)
-df.index      <span class="op">=</span> [<span class="st">&#39;BR&#39;</span>,       <span class="st">&#39;RU&#39;</span>,     <span class="st">&#39;IN&#39;</span>,        <span class="st">&#39;CH&#39;</span>,      <span class="st">&#39;SA&#39;</span>          ]
-<span class="bu">print</span>(df)</code></pre></div>
-<pre><code>##          country    capital    area  population
-## BR        Brazil   Brasilia   8.516      200.40
-## RU        Russia     Moscow  17.100      143.50
-## IN         India  New Delhi   3.286     1252.00
-## CH         China    Beijing   9.597     1357.00
-## SA  South Africa   Pretoria   1.221       52.98</code></pre>
-<p>Alternatively, if you have data in a CSV file you can import it using:</p>
-<pre><code>df = pd.read_csv(&#39;&lt;path&gt;&#39;)                # If there are no column names
-df = pd.read_csv(&#39;&lt;path&gt;&#39;, index_col = 0) # If there are column names</code></pre>
+<div id="importing-and-exporting" class="section level1">
+<h1><span class="header-section-number">3</span> Importing and Exporting</h1>
+<div id="opening-text-files" class="section level2">
+<h2><span class="header-section-number">3.1</span> Opening Text Files</h2>
+<div id="plain-text" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Plain Text</h3>
+<p>These are the easiest files to open.</p>
+<pre><code>file = open(&#39;huck_finn.txt&#39;, mode=&#39;r&#39;) # &#39;r&#39; is to read
+text = file.read()
+file.close()</code></pre>
+<p>The <code>.read()</code> method reads the entire file. You can also use <code>.readline()</code> which reads a line at a time.</p>
+<p>You can also manage files using a “context manager”:</p>
+<pre><code>with open(&#39;huck_finn.txt&#39;, mode=&#39;r&#39;) as file :
+  print(file.read())</code></pre>
+<p>This has the advantage that it doesn’t require you to close the connection at the end of the script.</p>
 </div>
-<div id="subsetting" class="section level2">
-<h2><span class="header-section-number">7.2</span> Subsetting</h2>
-<p>To select a column in pandas, use <code>df['country']</code>. This returns a “pandas Series” object, which is like a 1D element of a data frame. If you want to get a data frame back instead of a series, use <code>df[['country']]</code>. This is the opposite of <strong>R</strong>, where the <code>[[]]</code> is used to drill down further than <code>[]</code>. The reason for this is that <code>[]</code> defines a list in <strong>Python</strong>, so you’re really calling <code>df[&lt;subset&gt;]</code> where <code>&lt;subset&gt;</code> is a list of length 1. In <strong>R</strong>, the <code>[[]]</code> subset operator is actually a function, hence the differing behaviours. This means that subsetting for multiple columns in Python doesn’t take too much writing: <code>df[['country', 'capital']]</code>.</p>
-<p>Interestingly, and perhaps confusingly, if you provide a slice (range) to <code>df[]</code> then you will be subsetting on rows, not columns! Using <code>df[1:4]</code> selects the 2nd through 4th rows of the data frame.</p>
-<p>If you want to do anything more complex than this, it starts getting a bit weird, and you have to use the <code>loc()</code> method (which stands for “location”). To pull out a named row, you need to use the <code>df.loc['RU']</code> syntax (which returns a Series object), or <code>df.loc[['RU']]</code> (which returns a DataFrame). You can also select multiple rows this way: <code>df.loc[['RU', 'IN', 'CH']]</code>. You can then extend this to subset on columns as well, which starts to look a bit more like <strong>R</strong> (and like the 2D numpy array): <code>df.loc[['RU', 'IN', 'CH'], ['country', 'capital']]</code>.</p>
-<p>If you want to use an index, then you can do the same thing with lists of integers passed to the <code>iloc()</code> method (which stands for index-location). It seems like you probably need to chain these functions together if you want to have a mix of subsetting approaches.</p>
+<div id="tabular-data" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Tabular Data</h3>
+<div id="numpy-arrays" class="section level4">
+<h4><span class="header-section-number">3.1.2.1</span> NumPy arrays</h4>
+<pre><code>import numpy as np
+data = np.loadtxt(&#39;MNIST.txt&#39;, delimiter=&#39;,&#39;)</code></pre>
+<p>Some additional useful arguments include:</p>
+<ul>
+<li><code>skiprows</code> - set to an integer (typically 1) to skip header rows</li>
+<li><code>usecols</code> - pass a list of integers (e.g. <code>usecols=[0,2]</code>) to select specified columns</li>
+<li><code>dtype</code> - numpy arrays must all be a single data type, so this lets you cast everything to a type (for example <code>dtype=str</code>)</li>
+</ul>
+<p>You can also load data with multiple data types using <code>np.genfromtxt()</code>, and if you pass the <code>dtype=None</code> argument then it will automatically detect column types for you.</p>
+<pre><code>data = np.genfromtxt(&#39;titanic.csv&#39;, delimiter=&#39;,&#39;, names=True, dtype=None)</code></pre>
+<p>When you do this, the result is a <strong>structured array</strong> rather than a 2d numpy array. This isn’t ideal, which is why <strong>pandas</strong> exists. Also note that the function <code>np.recfromcsv()</code> does the same as <code>np.genfromtxt()</code> except that it sets <code>dtype=None</code>, <code>delimiter=','</code> and <code>names=True</code> by default - handy!</p>
 </div>
-<div id="reading-in-chunks" class="section level2">
-<h2><span class="header-section-number">7.3</span> Reading in chunks</h2>
-<p>You can use the <code>chunksize</code> argument to read a CSV file in chunks, then iterate over the chunks in a loop. This can be useful when you’re dealing with large amounts of data that won’t fit in memory.</p>
+<div id="pandas-dataframes" class="section level4">
+<h4><span class="header-section-number">3.1.2.2</span> Pandas DataFrames</h4>
+<p>These are the standard for almost all data work in Python. The Pandas chapter will include more information about how to work with DataFrames in Pandas.</p>
 <pre><code>import pandas as pd
-result = []
-for chunk in pd.read_csv(&#39;data.csv&#39;, chunksize = 1000) :
-  result.append(sun(chunk[&#39;x&#39;]))
-total = sum(result)
-print(total)</code></pre>
+data = pd.read_csv(&#39;winequality-red.csv&#39;)</code></pre>
+<p>Key options include:</p>
+<ul>
+<li><code>sep</code> - delimiter character</li>
+<li><code>nrows</code> - specify the number of rows to read</li>
+<li><code>header</code> - set to <code>None</code> (not 0!) if your data doesn’t have a header row</li>
+<li><code>na_values</code> - strings to treat as missing values</li>
+</ul>
+<p>Pandas has some handy helpers, including:</p>
+<ul>
+<li><code>.head()</code> - shows the top 5 rows</li>
+<li>`<code>.values</code> - returns a numpy array</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="relational-databases" class="section level2">
+<h2><span class="header-section-number">3.2</span> Relational Databases</h2>
+</div>
+<div id="exotic-filetypes" class="section level2">
+<h2><span class="header-section-number">3.3</span> Exotic Filetypes</h2>
+<div id="excel" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Excel</h3>
+<pre><code>import pandas as pd
+data = pd.ExcelFile(&#39;urbanpop.xlsx&#39;)
+print(data.sheet_names)
+df1 = data.parse(&#39;1960-1966&#39;) # sheet name as string, or index as float</code></pre>
+<p>Key options include:</p>
+<ul>
+<li><code>skiprows</code> - indexes of rows to skip - must be a list (zero indexed!)</li>
+<li><code>names</code> - can be used to provide (or override) the row names</li>
+<li><code>parse_cols</code> - can be used to specify which columns to import</li>
+</ul>
+</div>
+<div id="pickle-serialised" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Pickle (serialised)</h3>
+<pre><code>import pickle
+with open(&#39;data.pkl&#39;, &#39;rb&#39;) as file:
+    d = pickle.load(file)</code></pre>
+</div>
+<div id="hdf5" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> HDF5</h3>
+<p>HDF5 stands for Hierarchical Data Format 5. It’s the standard for storing large quantities of numerical data, and can scale to exabytes.</p>
+<pre><code>import h5py
+data = h5py.File(&#39;LIGO_data.hdf5&#39;, &#39;r&#39;) # &#39;r&#39; is to read</code></pre>
+<p>The file can look like a dict, and you can explore it using the same techniques:</p>
+<pre><code>for key in data.keys() :
+  print(key)</code></pre>
+<p>Because it is hierarchical, you can drill down further to find out what is there:</p>
+<pre><code>for key in data[&#39;meta&#39;].keys() :
+  print(key)</code></pre>
+<p>You can grab values using the <code>.value</code> attribute:</p>
+<pre><code>strain = data[&#39;strain&#39;][&#39;Strain&#39;].value</code></pre>
+</div>
+</div>
+<div id="working-with-the-file-system" class="section level2">
+<h2><span class="header-section-number">3.4</span> Working with the file system</h2>
+<p>You can programmatically interrogate the file system using the <strong>os</strong> package.</p>
+<pre><code>import os
+wd = os.getcwd()
+os.listdir(wd)</code></pre>
 
 </div>
 </div>
@@ -244,8 +300,8 @@ print(total)</code></pre>
           </div>
         </div>
       </div>
-<a href="numpy-numeric-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="control-flow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -275,7 +331,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/perrystephenson/py4ds/edit/master/06-pandas.Rmd",
+"link": "https://github.com/perrystephenson/py4ds/edit/master/02-importexport.Rmd",
 "text": "Edit"
 },
 "download": null,

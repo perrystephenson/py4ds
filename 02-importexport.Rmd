@@ -1,0 +1,149 @@
+# Importing and Exporting
+
+## Opening Text Files
+
+### Plain Text
+
+These are the easiest files to open. 
+
+```
+file = open('huck_finn.txt', mode='r') # 'r' is to read
+text = file.read()
+file.close()
+```
+
+The `.read()` method reads the entire file. You can also use `.readline()` 
+which reads a line at a time.
+
+You can also manage files using a "context manager":
+
+```
+with open('huck_finn.txt', mode='r') as file :
+  print(file.read())
+```
+
+This has the advantage that it doesn't require you to close the connection at
+the end of the script.
+
+### Tabular Data
+
+#### NumPy arrays
+
+```
+import numpy as np
+data = np.loadtxt('MNIST.txt', delimiter=',')
+```
+
+Some additional useful arguments include:
+
+* `skiprows` - set to an integer (typically 1) to skip header rows
+* `usecols` - pass a list of integers (e.g. `usecols=[0,2]`) to select 
+  specified columns
+* `dtype` - numpy arrays must all be a single data type, so this lets you cast
+  everything to a type (for example `dtype=str`)
+  
+You can also load data with multiple data types using `np.genfromtxt()`, and if
+you pass the `dtype=None` argument then it will automatically detect column
+types for you.
+
+```
+data = np.genfromtxt('titanic.csv', delimiter=',', names=True, dtype=None)
+```  
+
+When you do this, the result is a **structured array** rather than a 2d numpy
+array. This isn't ideal, which is why **pandas** exists. Also note that the 
+function `np.recfromcsv()` does the same as `np.genfromtxt()` except that it
+sets `dtype=None`, `delimiter=','` and `names=True` by default - handy!
+
+#### Pandas DataFrames
+
+These are the standard for almost all data work in Python. The Pandas chapter
+will include more information about how to work with DataFrames in Pandas.
+
+```
+import pandas as pd
+data = pd.read_csv('winequality-red.csv')
+```
+
+Key options include:
+
+* `sep` - delimiter character
+* `nrows` - specify the number of rows to read
+* `header` - set to `None` (not 0!) if your data doesn't have a header row
+* `na_values` - strings to treat as missing values
+
+Pandas has some handy helpers, including:
+
+* `.head()` - shows the top 5 rows
+* ``.values` - returns a numpy array
+
+
+## Relational Databases
+
+## Exotic Filetypes
+
+### Excel
+
+```
+import pandas as pd
+data = pd.ExcelFile('urbanpop.xlsx')
+print(data.sheet_names)
+df1 = data.parse('1960-1966') # sheet name as string, or index as float
+```
+
+Key options include:
+
+* `skiprows` - indexes of rows to skip - must be a list (zero indexed!)
+* `names` - can be used to provide (or override) the row names
+* `parse_cols` - can be used to specify which columns to import
+
+### Pickle (serialised)
+
+```
+import pickle
+with open('data.pkl', 'rb') as file:
+    d = pickle.load(file)
+```
+
+### HDF5
+
+HDF5 stands for Hierarchical Data Format 5. It's the standard for storing large
+quantities of numerical data, and can scale to exabytes.
+
+```
+import h5py
+data = h5py.File('LIGO_data.hdf5', 'r') # 'r' is to read
+```
+
+The file can look like a dict, and you can explore it using the same 
+techniques:
+
+```
+for key in data.keys() :
+  print(key)
+```
+
+Because it is hierarchical, you can drill down further to find out what is
+there:
+
+```
+for key in data['meta'].keys() :
+  print(key)
+```
+
+You can grab values using the `.value` attribute:
+
+```
+strain = data['strain']['Strain'].value
+```
+
+## Working with the file system
+
+You can programmatically interrogate the file system using the **os** package.
+
+```
+import os
+wd = os.getcwd()
+os.listdir(wd)
+```
+

@@ -25,7 +25,7 @@
 <meta name="author" content="Perry Stephenson">
 
 
-<meta name="date" content="2018-09-30">
+<meta name="date" content="2018-10-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="index.html">
-<link rel="next" href="control-flow.html">
+<link rel="next" href="importing-and-exporting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -112,33 +112,68 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="syntax.html"><a href="syntax.html#comments"><i class="fa fa-check"></i><b>2.2</b> Comments</a></li>
 <li class="chapter" data-level="2.3" data-path="syntax.html"><a href="syntax.html#basic-operations"><i class="fa fa-check"></i><b>2.3</b> Basic Operations</a></li>
 <li class="chapter" data-level="2.4" data-path="syntax.html"><a href="syntax.html#strings"><i class="fa fa-check"></i><b>2.4</b> Strings</a></li>
-<li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#lists-arrays-columns-vectors"><i class="fa fa-check"></i><b>2.5</b> Lists / Arrays / Columns / Vectors</a></li>
-<li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#indexing"><i class="fa fa-check"></i><b>2.6</b> Indexing</a></li>
-<li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#copy-modify"><i class="fa fa-check"></i><b>2.7</b> Copy / Modify</a></li>
-<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#grouping"><i class="fa fa-check"></i><b>2.8</b> Grouping</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#missing-values-and-extreme-numbers"><i class="fa fa-check"></i><b>2.9</b> Missing values and extreme numbers</a></li>
-<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#booleans"><i class="fa fa-check"></i><b>2.10</b> Booleans</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#dictionaries"><i class="fa fa-check"></i><b>2.11</b> Dictionaries</a></li>
-<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#functions"><i class="fa fa-check"></i><b>2.12</b> Functions</a></li>
-<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#methods"><i class="fa fa-check"></i><b>2.13</b> Methods</a></li>
-<li class="chapter" data-level="2.14" data-path="syntax.html"><a href="syntax.html#namespaces"><i class="fa fa-check"></i><b>2.14</b> Namespaces</a></li>
+<li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#type-casting"><i class="fa fa-check"></i><b>2.5</b> Type Casting</a></li>
+<li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#lists-arrays-columns-vectors"><i class="fa fa-check"></i><b>2.6</b> Lists / Arrays / Columns / Vectors</a></li>
+<li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#indexing"><i class="fa fa-check"></i><b>2.7</b> Indexing</a></li>
+<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#copy-modify"><i class="fa fa-check"></i><b>2.8</b> Copy / Modify</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#grouping"><i class="fa fa-check"></i><b>2.9</b> Grouping</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#missing-values-and-extreme-numbers"><i class="fa fa-check"></i><b>2.10</b> Missing values and extreme numbers</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#booleans"><i class="fa fa-check"></i><b>2.11</b> Booleans</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#dictionaries"><i class="fa fa-check"></i><b>2.12</b> Dictionaries</a></li>
+<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#functions"><i class="fa fa-check"></i><b>2.13</b> Functions</a><ul>
+<li class="chapter" data-level="2.13.1" data-path="syntax.html"><a href="syntax.html#lambda-functions"><i class="fa fa-check"></i><b>2.13.1</b> Lambda functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>3</b> Control Flow</a><ul>
-<li class="chapter" data-level="3.1" data-path="control-flow.html"><a href="control-flow.html#if-statements"><i class="fa fa-check"></i><b>3.1</b> If statements</a></li>
-<li class="chapter" data-level="3.2" data-path="control-flow.html"><a href="control-flow.html#while-loop"><i class="fa fa-check"></i><b>3.2</b> While loop</a></li>
-<li class="chapter" data-level="3.3" data-path="control-flow.html"><a href="control-flow.html#for-loop"><i class="fa fa-check"></i><b>3.3</b> For loop</a></li>
+<li class="chapter" data-level="2.14" data-path="syntax.html"><a href="syntax.html#methods"><i class="fa fa-check"></i><b>2.14</b> Methods</a></li>
+<li class="chapter" data-level="2.15" data-path="syntax.html"><a href="syntax.html#namespaces"><i class="fa fa-check"></i><b>2.15</b> Namespaces</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>4</b> Scripting</a><ul>
-<li class="chapter" data-level="4.1" data-path="scripting.html"><a href="scripting.html#imports"><i class="fa fa-check"></i><b>4.1</b> Imports</a></li>
-<li class="chapter" data-level="4.2" data-path="scripting.html"><a href="scripting.html#boilerplate"><i class="fa fa-check"></i><b>4.2</b> Boilerplate</a></li>
+<li class="chapter" data-level="3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html"><i class="fa fa-check"></i><b>3</b> Importing and Exporting</a><ul>
+<li class="chapter" data-level="3.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#opening-text-files"><i class="fa fa-check"></i><b>3.1</b> Opening Text Files</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#plain-text"><i class="fa fa-check"></i><b>3.1.1</b> Plain Text</a></li>
+<li class="chapter" data-level="3.1.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#tabular-data"><i class="fa fa-check"></i><b>3.1.2</b> Tabular Data</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html"><i class="fa fa-check"></i><b>5</b> Numpy (Numeric Python)</a><ul>
-<li class="chapter" data-level="5.1" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#numpy-arrays"><i class="fa fa-check"></i><b>5.1</b> Numpy arrays</a></li>
-<li class="chapter" data-level="5.2" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#two-dimensional-numpy-arrays"><i class="fa fa-check"></i><b>5.2</b> Two dimensional numpy arrays</a></li>
+<li class="chapter" data-level="3.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#relational-databases"><i class="fa fa-check"></i><b>3.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="3.3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#exotic-filetypes"><i class="fa fa-check"></i><b>3.3</b> Exotic Filetypes</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#excel"><i class="fa fa-check"></i><b>3.3.1</b> Excel</a></li>
+<li class="chapter" data-level="3.3.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#pickle-serialised"><i class="fa fa-check"></i><b>3.3.2</b> Pickle (serialised)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#hdf5"><i class="fa fa-check"></i><b>3.3.3</b> HDF5</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>6</b> Pandas</a><ul>
-<li class="chapter" data-level="6.1" data-path="pandas.html"><a href="pandas.html#creation"><i class="fa fa-check"></i><b>6.1</b> Creation</a></li>
-<li class="chapter" data-level="6.2" data-path="pandas.html"><a href="pandas.html#subsetting"><i class="fa fa-check"></i><b>6.2</b> Subsetting</a></li>
+<li class="chapter" data-level="3.4" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#working-with-the-file-system"><i class="fa fa-check"></i><b>3.4</b> Working with the file system</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>4</b> Control Flow</a><ul>
+<li class="chapter" data-level="4.1" data-path="control-flow.html"><a href="control-flow.html#if-statements"><i class="fa fa-check"></i><b>4.1</b> If statements</a></li>
+<li class="chapter" data-level="4.2" data-path="control-flow.html"><a href="control-flow.html#while-loop"><i class="fa fa-check"></i><b>4.2</b> While loop</a></li>
+<li class="chapter" data-level="4.3" data-path="control-flow.html"><a href="control-flow.html#for-loop"><i class="fa fa-check"></i><b>4.3</b> For loop</a></li>
+<li class="chapter" data-level="4.4" data-path="control-flow.html"><a href="control-flow.html#error-handling"><i class="fa fa-check"></i><b>4.4</b> Error Handling</a></li>
+<li class="chapter" data-level="4.5" data-path="control-flow.html"><a href="control-flow.html#iterators-and-iterables"><i class="fa fa-check"></i><b>4.5</b> Iterators and Iterables</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="control-flow.html"><a href="control-flow.html#enumerate"><i class="fa fa-check"></i><b>4.5.1</b> Enumerate</a></li>
+<li class="chapter" data-level="4.5.2" data-path="control-flow.html"><a href="control-flow.html#zip"><i class="fa fa-check"></i><b>4.5.2</b> Zip</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="control-flow.html"><a href="control-flow.html#list-comprehensions"><i class="fa fa-check"></i><b>4.6</b> List Comprehensions</a></li>
+<li class="chapter" data-level="4.7" data-path="control-flow.html"><a href="control-flow.html#generators"><i class="fa fa-check"></i><b>4.7</b> Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>5</b> Scripting</a><ul>
+<li class="chapter" data-level="5.1" data-path="scripting.html"><a href="scripting.html#imports"><i class="fa fa-check"></i><b>5.1</b> Imports</a></li>
+<li class="chapter" data-level="5.2" data-path="scripting.html"><a href="scripting.html#boilerplate"><i class="fa fa-check"></i><b>5.2</b> Boilerplate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html"><i class="fa fa-check"></i><b>6</b> Numpy (Numeric Python)</a><ul>
+<li class="chapter" data-level="6.1" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#numpy-arrays-1"><i class="fa fa-check"></i><b>6.1</b> Numpy arrays</a></li>
+<li class="chapter" data-level="6.2" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#two-dimensional-numpy-arrays"><i class="fa fa-check"></i><b>6.2</b> Two dimensional numpy arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>7</b> Pandas</a><ul>
+<li class="chapter" data-level="7.1" data-path="pandas.html"><a href="pandas.html#creation"><i class="fa fa-check"></i><b>7.1</b> Creation</a></li>
+<li class="chapter" data-level="7.2" data-path="pandas.html"><a href="pandas.html#subsetting"><i class="fa fa-check"></i><b>7.2</b> Subsetting</a></li>
+<li class="chapter" data-level="7.3" data-path="pandas.html"><a href="pandas.html#reading-in-chunks"><i class="fa fa-check"></i><b>7.3</b> Reading in chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualisation.html"><a href="visualisation.html"><i class="fa fa-check"></i><b>8</b> Visualisation</a><ul>
+<li class="chapter" data-level="8.1" data-path="visualisation.html"><a href="visualisation.html#matplotlib"><i class="fa fa-check"></i><b>8.1</b> Matplotlib</a></li>
+<li class="chapter" data-level="8.2" data-path="visualisation.html"><a href="visualisation.html#line-plot"><i class="fa fa-check"></i><b>8.2</b> Line Plot</a></li>
+<li class="chapter" data-level="8.3" data-path="visualisation.html"><a href="visualisation.html#scatter-plot"><i class="fa fa-check"></i><b>8.3</b> Scatter Plot</a></li>
+<li class="chapter" data-level="8.4" data-path="visualisation.html"><a href="visualisation.html#text"><i class="fa fa-check"></i><b>8.4</b> Text</a></li>
+<li class="chapter" data-level="8.5" data-path="visualisation.html"><a href="visualisation.html#histograms"><i class="fa fa-check"></i><b>8.5</b> Histograms</a></li>
+<li class="chapter" data-level="8.6" data-path="visualisation.html"><a href="visualisation.html#modifiers"><i class="fa fa-check"></i><b>8.6</b> Modifiers</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="visualisation.html"><a href="visualisation.html#scales"><i class="fa fa-check"></i><b>8.6.1</b> Scales</a></li>
+<li class="chapter" data-level="8.6.2" data-path="visualisation.html"><a href="visualisation.html#labels"><i class="fa fa-check"></i><b>8.6.2</b> Labels</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -201,12 +236,31 @@ msg <span class="op">=</span> <span class="st">&#39;The value of x is &#39;</spa
 <span class="bu">print</span>(msg)</code></pre></div>
 <pre><code>## The value of x is 0.75</code></pre>
 </div>
+<div id="type-casting" class="section level2">
+<h2><span class="header-section-number">2.5</span> Type Casting</h2>
+<p>Python uses sensibly named functions to cast between different types, and does not do this automatically. For example, <code>print('Hello number ' + 3)</code> will not work, as you need to explicitly cast like this: <code>print('Hello number ' + str(3))</code>.</p>
+<p>The casting functions are named after the data types:</p>
+<ul>
+<li><code>int</code></li>
+<li><code>str</code></li>
+<li><code>float</code></li>
+<li><code>bool</code></li>
+<li>etc</li>
+</ul>
+</div>
 <div id="lists-arrays-columns-vectors" class="section level2">
-<h2><span class="header-section-number">2.5</span> Lists / Arrays / Columns / Vectors</h2>
+<h2><span class="header-section-number">2.6</span> Lists / Arrays / Columns / Vectors</h2>
 <p>In <strong>R</strong>, if you define something using the inline notation <code>c(1.73, 1.68, 1.71, 1.89)</code> then you are creating an “atomic vector” (i.e. a vector containing only one type of data). In <strong>Python</strong>, if you define something using the inline notation [1.73, 1.68, 1.71, 1.89] then are creating a “list”. “List” seems to have the same meaning as R (can contain multiple types, can contain other lists, etc), so it is just the notation that differs. There is no base equivalent to the atomic vector in Python - it seems that this functionality is provided by the <strong>NumPy Array</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_list <span class="op">=</span> [<span class="st">&#39;1&#39;</span>, <span class="dv">2</span>, <span class="fl">3.0</span>, <span class="st">&#39;d&#39;</span>]
+<span class="bu">print</span>(my_list)</code></pre></div>
+<pre><code>## [&#39;1&#39;, 2, 3.0, &#39;d&#39;]</code></pre>
+<p>You can also put lists inside lists:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_nested_list <span class="op">=</span> [[<span class="st">&quot;Hello&quot;</span>, <span class="dv">1</span>],[<span class="st">&quot;World&quot;</span>, <span class="dv">2</span>]]
+<span class="bu">print</span>(my_nested_list)</code></pre></div>
+<pre><code>## [[&#39;Hello&#39;, 1], [&#39;World&#39;, 2]]</code></pre>
 </div>
 <div id="indexing" class="section level2">
-<h2><span class="header-section-number">2.6</span> Indexing</h2>
+<h2><span class="header-section-number">2.7</span> Indexing</h2>
 <p><strong>Python</strong> uses 0-based indexing, whereas <strong>R</strong> uses 1-based indexing. If you want to select the 4th element in a vector, you would use index 4 in R (1,2,3,4), but index 3 in Python (0,1,2,3). The syntax for this in Python is the same as R - <code>var[3]</code>.</p>
 <p>Negative indices work very differently! In <strong>R</strong>, a negative index will return the vector with the specified item removed i.e. if you use <code>var[-3]</code> then you will get the vector without the third element. In <strong>Python</strong> however, it will select a single element by counting backwards. An index of <code>-1</code> returns the final element (because you start at index zero and take one step backwards), <code>-2</code> returns the second last element, and so on.</p>
 <p>Slicing works even more strangely in Python. Whilst in <strong>R</strong>, using index <code>var[3:5]</code> will return the 3rd, 4th and 5th elements, in <strong>Python</strong> this will only return the 4th and 5th elements. This is because the syntax in Python is [inclusive:exclusive] and because of 0-based indexing.</p>
@@ -221,7 +275,7 @@ msg <span class="op">=</span> <span class="st">&#39;The value of x is &#39;</spa
 <pre><code>## [0, 1, 2, 4]</code></pre>
 </div>
 <div id="copy-modify" class="section level2">
-<h2><span class="header-section-number">2.7</span> Copy / Modify</h2>
+<h2><span class="header-section-number">2.8</span> Copy / Modify</h2>
 <p><strong>R</strong> has a nice “copy on modify” behaviour, which means that when you assign a list (or anything else) to a new variable, it doesn’t copy it until you make a change, at which point it saves a modified copy of that object. In <strong>Python</strong> however, the behaviour is different for different data types (booooooo). Lists, for example, are copied by reference, which means that changing an element in a “copied” list also changes the same element in the original list. To get around this you need to do something like y = list(x) or y = x[:] to explicitly copy all items from the list.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]
 y <span class="op">=</span> x
@@ -235,7 +289,7 @@ z <span class="op">=</span> x[:]<span class="op">;</span> z[<span class="dv">2</
 <pre><code>## [1, 2, 3, 4]</code></pre>
 </div>
 <div id="grouping" class="section level2">
-<h2><span class="header-section-number">2.8</span> Grouping</h2>
+<h2><span class="header-section-number">2.9</span> Grouping</h2>
 <p>Python does not use braces - it uses indentation to group blocks of code. This is supposed to improve readability, but in practice it can be super messy. Can use spaces or tabs.</p>
 <pre><code>if condition :
     execute this
@@ -243,11 +297,11 @@ z <span class="op">=</span> x[:]<span class="op">;</span> z[<span class="dv">2</
 execute this regardless because we&#39;ve got no indent</code></pre>
 </div>
 <div id="missing-values-and-extreme-numbers" class="section level2">
-<h2><span class="header-section-number">2.9</span> Missing values and extreme numbers</h2>
+<h2><span class="header-section-number">2.10</span> Missing values and extreme numbers</h2>
 <p>In <strong>R</strong>, you have <code>NA</code> (missing) and <code>NULL</code> (undefined, empty), <code>NaN</code> (not a number), and <code>Inf</code> (infinity). In <strong>Python</strong>, you have <code>None</code>, and numpy has <code>numpy.nan</code> (not a number). There is no equivalent to <code>Inf</code>, as it just raises an error.</p>
 </div>
 <div id="booleans" class="section level2">
-<h2><span class="header-section-number">2.10</span> Booleans</h2>
+<h2><span class="header-section-number">2.11</span> Booleans</h2>
 <p>In <strong>R</strong>, booleans are defined as <code>TRUE</code> and <code>FALSE</code>, with the shortcut <code>T</code> and <code>F</code> also commonly used. In <strong>Python</strong>, the booleans are simply defined as <code>True</code> and <code>False</code>.</p>
 <p>Boolean arithmetic is performed using the <code>and</code> and <code>or</code> keywords, corresponding to the <code>&amp;</code> and <code>|</code> operators in R. You can also use the <code>not</code> operator, which corresponds to <code>!</code> in R.</p>
 <p>Booleans are a bit harder to work with when you’re using numpy arrays, because the base logic keywords are not vectorised. To work with numpy arrays, you have to use the built in numpy functions:</p>
@@ -256,13 +310,24 @@ np.locical_or()
 np.locical_not()</code></pre>
 </div>
 <div id="dictionaries" class="section level2">
-<h2><span class="header-section-number">2.11</span> Dictionaries</h2>
+<h2><span class="header-section-number">2.12</span> Dictionaries</h2>
 <p>Dictionaries don’t really exist in <strong>R</strong>, because the dictionary functionality (named elements) is available in both atomic vectors and lists. To create a dictionary in <strong>Python</strong>, you can use the following syntax:</p>
-<pre><code>world = {&quot;afghanistan&quot;:30.55, &quot;albania&quot;:2.77, &quot;algeria&quot;:39.21}</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">world <span class="op">=</span> {<span class="st">&quot;afghanistan&quot;</span>:<span class="fl">30.55</span>, <span class="st">&quot;albania&quot;</span>:<span class="fl">2.77</span>, <span class="st">&quot;algeria&quot;</span>:<span class="fl">39.21</span>}</code></pre></div>
 <p>You can also do nested dictionaries - the keys are somewhat limited (they can be any immutable data type) but the values can be dictionaries if you want.</p>
+<p>You can retrieve the keys from a dictionary using the <strong>.keys()</strong> method, e.g. <code>world.keys()</code>. You can select elements from a dictionary using the key inside square brackets, e.g. <code>world['albania']</code></p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(world.keys())</code></pre></div>
+<pre><code>## dict_keys([&#39;afghanistan&#39;, &#39;albania&#39;, &#39;algeria&#39;])</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(world[<span class="st">&#39;albania&#39;</span>])</code></pre></div>
+<pre><code>## 2.77</code></pre>
+<p>In many ways, dictionaries are like named lists in R. You can add elements to a dictionary using <code>world['italy'] = 59.83</code> for example.</p>
+<p>You can also interrogate whether a key exists in a dictionary using the <code>in</code> operator, which is like the <code>%in%</code> operator from R. For example:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&#39;albania&#39;</span> <span class="kw">in</span> world)</code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="st">&#39;moon&#39;</span> <span class="kw">in</span> world)</code></pre></div>
+<pre><code>## False</code></pre>
 </div>
 <div id="functions" class="section level2">
-<h2><span class="header-section-number">2.12</span> Functions</h2>
+<h2><span class="header-section-number">2.13</span> Functions</h2>
 <p>Functions are defined using the keyword def, like so:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> repeat(s, exclaim):
   <span class="co">&quot;&quot;&quot;</span>
@@ -277,13 +342,20 @@ np.locical_not()</code></pre>
 <pre><code>## hahaha!!!</code></pre>
 <p>A return statement appears to be compulsory in Python functions, unlike in R where it is not strictly required. Like in all other scripting languages, functions must be defined before they are used (i.e. earlier in the script). Importing modules is probably a sensible way to manage this.</p>
 <p>Function arguments look to be specified and evaluated similarly to R - you name the arguments and you can give them default values in the definition statement. When using the function you can resolve arguments by name or by order (but you cannot mix the two approaches), and there is no partial matching.</p>
+<div id="lambda-functions" class="section level3">
+<h3><span class="header-section-number">2.13.1</span> Lambda functions</h3>
+<p>These are just like anonymous functions in R - you can define them inline and don’t necessarily need to provide a name. Useful to save typing, but also useful in the <code>map()</code> and <code>functools.reduce()</code> functions.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_glue_function <span class="op">=</span> <span class="kw">lambda</span> a, b: a <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> b <span class="op">+</span> <span class="st">&quot;!&quot;</span>
+<span class="bu">print</span>(my_glue_function(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;World&quot;</span>))</code></pre></div>
+<pre><code>## Hello World!</code></pre>
+</div>
 </div>
 <div id="methods" class="section level2">
-<h2><span class="header-section-number">2.13</span> Methods</h2>
+<h2><span class="header-section-number">2.14</span> Methods</h2>
 <p><strong>Python</strong> is a proper object-oriented (OO) language, unlike <strong>R</strong> which is a functional language with three different OO systems built on top of it. The Python model for objects and methods is most similar to R’s Reference Classes (RC) framework. In Python, methods belong to objects (you invoke them using object.method() notation), and behave according to the type of the object. Some methods can mutate the object they belong to, others do not, and there is no easy way to tell the difference without reading the documentation.</p>
 </div>
 <div id="namespaces" class="section level2">
-<h2><span class="header-section-number">2.14</span> Namespaces</h2>
+<h2><span class="header-section-number">2.15</span> Namespaces</h2>
 <p>If you have a module called binky.py and a function in that module called foo() then the fully qualified function name is binky.foo(). This is sort of like R’s :: notation (e.g. dplyr::select()) except that Python modules seem to typically be more light weight than R packages.</p>
 
 </div>
@@ -294,7 +366,7 @@ np.locical_not()</code></pre>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="control-flow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="importing-and-exporting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

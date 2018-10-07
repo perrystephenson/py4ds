@@ -25,14 +25,14 @@
 <meta name="author" content="Perry Stephenson">
 
 
-<meta name="date" content="2018-09-30">
+<meta name="date" content="2018-10-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="syntax.html">
+<link rel="prev" href="importing-and-exporting.html">
 <link rel="next" href="scripting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -112,33 +112,68 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="syntax.html"><a href="syntax.html#comments"><i class="fa fa-check"></i><b>2.2</b> Comments</a></li>
 <li class="chapter" data-level="2.3" data-path="syntax.html"><a href="syntax.html#basic-operations"><i class="fa fa-check"></i><b>2.3</b> Basic Operations</a></li>
 <li class="chapter" data-level="2.4" data-path="syntax.html"><a href="syntax.html#strings"><i class="fa fa-check"></i><b>2.4</b> Strings</a></li>
-<li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#lists-arrays-columns-vectors"><i class="fa fa-check"></i><b>2.5</b> Lists / Arrays / Columns / Vectors</a></li>
-<li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#indexing"><i class="fa fa-check"></i><b>2.6</b> Indexing</a></li>
-<li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#copy-modify"><i class="fa fa-check"></i><b>2.7</b> Copy / Modify</a></li>
-<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#grouping"><i class="fa fa-check"></i><b>2.8</b> Grouping</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#missing-values-and-extreme-numbers"><i class="fa fa-check"></i><b>2.9</b> Missing values and extreme numbers</a></li>
-<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#booleans"><i class="fa fa-check"></i><b>2.10</b> Booleans</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#dictionaries"><i class="fa fa-check"></i><b>2.11</b> Dictionaries</a></li>
-<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#functions"><i class="fa fa-check"></i><b>2.12</b> Functions</a></li>
-<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#methods"><i class="fa fa-check"></i><b>2.13</b> Methods</a></li>
-<li class="chapter" data-level="2.14" data-path="syntax.html"><a href="syntax.html#namespaces"><i class="fa fa-check"></i><b>2.14</b> Namespaces</a></li>
+<li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#type-casting"><i class="fa fa-check"></i><b>2.5</b> Type Casting</a></li>
+<li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#lists-arrays-columns-vectors"><i class="fa fa-check"></i><b>2.6</b> Lists / Arrays / Columns / Vectors</a></li>
+<li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#indexing"><i class="fa fa-check"></i><b>2.7</b> Indexing</a></li>
+<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#copy-modify"><i class="fa fa-check"></i><b>2.8</b> Copy / Modify</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#grouping"><i class="fa fa-check"></i><b>2.9</b> Grouping</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#missing-values-and-extreme-numbers"><i class="fa fa-check"></i><b>2.10</b> Missing values and extreme numbers</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#booleans"><i class="fa fa-check"></i><b>2.11</b> Booleans</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#dictionaries"><i class="fa fa-check"></i><b>2.12</b> Dictionaries</a></li>
+<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#functions"><i class="fa fa-check"></i><b>2.13</b> Functions</a><ul>
+<li class="chapter" data-level="2.13.1" data-path="syntax.html"><a href="syntax.html#lambda-functions"><i class="fa fa-check"></i><b>2.13.1</b> Lambda functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>3</b> Control Flow</a><ul>
-<li class="chapter" data-level="3.1" data-path="control-flow.html"><a href="control-flow.html#if-statements"><i class="fa fa-check"></i><b>3.1</b> If statements</a></li>
-<li class="chapter" data-level="3.2" data-path="control-flow.html"><a href="control-flow.html#while-loop"><i class="fa fa-check"></i><b>3.2</b> While loop</a></li>
-<li class="chapter" data-level="3.3" data-path="control-flow.html"><a href="control-flow.html#for-loop"><i class="fa fa-check"></i><b>3.3</b> For loop</a></li>
+<li class="chapter" data-level="2.14" data-path="syntax.html"><a href="syntax.html#methods"><i class="fa fa-check"></i><b>2.14</b> Methods</a></li>
+<li class="chapter" data-level="2.15" data-path="syntax.html"><a href="syntax.html#namespaces"><i class="fa fa-check"></i><b>2.15</b> Namespaces</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>4</b> Scripting</a><ul>
-<li class="chapter" data-level="4.1" data-path="scripting.html"><a href="scripting.html#imports"><i class="fa fa-check"></i><b>4.1</b> Imports</a></li>
-<li class="chapter" data-level="4.2" data-path="scripting.html"><a href="scripting.html#boilerplate"><i class="fa fa-check"></i><b>4.2</b> Boilerplate</a></li>
+<li class="chapter" data-level="3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html"><i class="fa fa-check"></i><b>3</b> Importing and Exporting</a><ul>
+<li class="chapter" data-level="3.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#opening-text-files"><i class="fa fa-check"></i><b>3.1</b> Opening Text Files</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#plain-text"><i class="fa fa-check"></i><b>3.1.1</b> Plain Text</a></li>
+<li class="chapter" data-level="3.1.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#tabular-data"><i class="fa fa-check"></i><b>3.1.2</b> Tabular Data</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html"><i class="fa fa-check"></i><b>5</b> Numpy (Numeric Python)</a><ul>
-<li class="chapter" data-level="5.1" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#numpy-arrays"><i class="fa fa-check"></i><b>5.1</b> Numpy arrays</a></li>
-<li class="chapter" data-level="5.2" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#two-dimensional-numpy-arrays"><i class="fa fa-check"></i><b>5.2</b> Two dimensional numpy arrays</a></li>
+<li class="chapter" data-level="3.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#relational-databases"><i class="fa fa-check"></i><b>3.2</b> Relational Databases</a></li>
+<li class="chapter" data-level="3.3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#exotic-filetypes"><i class="fa fa-check"></i><b>3.3</b> Exotic Filetypes</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#excel"><i class="fa fa-check"></i><b>3.3.1</b> Excel</a></li>
+<li class="chapter" data-level="3.3.2" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#pickle-serialised"><i class="fa fa-check"></i><b>3.3.2</b> Pickle (serialised)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#hdf5"><i class="fa fa-check"></i><b>3.3.3</b> HDF5</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>6</b> Pandas</a><ul>
-<li class="chapter" data-level="6.1" data-path="pandas.html"><a href="pandas.html#creation"><i class="fa fa-check"></i><b>6.1</b> Creation</a></li>
-<li class="chapter" data-level="6.2" data-path="pandas.html"><a href="pandas.html#subsetting"><i class="fa fa-check"></i><b>6.2</b> Subsetting</a></li>
+<li class="chapter" data-level="3.4" data-path="importing-and-exporting.html"><a href="importing-and-exporting.html#working-with-the-file-system"><i class="fa fa-check"></i><b>3.4</b> Working with the file system</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="control-flow.html"><a href="control-flow.html"><i class="fa fa-check"></i><b>4</b> Control Flow</a><ul>
+<li class="chapter" data-level="4.1" data-path="control-flow.html"><a href="control-flow.html#if-statements"><i class="fa fa-check"></i><b>4.1</b> If statements</a></li>
+<li class="chapter" data-level="4.2" data-path="control-flow.html"><a href="control-flow.html#while-loop"><i class="fa fa-check"></i><b>4.2</b> While loop</a></li>
+<li class="chapter" data-level="4.3" data-path="control-flow.html"><a href="control-flow.html#for-loop"><i class="fa fa-check"></i><b>4.3</b> For loop</a></li>
+<li class="chapter" data-level="4.4" data-path="control-flow.html"><a href="control-flow.html#error-handling"><i class="fa fa-check"></i><b>4.4</b> Error Handling</a></li>
+<li class="chapter" data-level="4.5" data-path="control-flow.html"><a href="control-flow.html#iterators-and-iterables"><i class="fa fa-check"></i><b>4.5</b> Iterators and Iterables</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="control-flow.html"><a href="control-flow.html#enumerate"><i class="fa fa-check"></i><b>4.5.1</b> Enumerate</a></li>
+<li class="chapter" data-level="4.5.2" data-path="control-flow.html"><a href="control-flow.html#zip"><i class="fa fa-check"></i><b>4.5.2</b> Zip</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="control-flow.html"><a href="control-flow.html#list-comprehensions"><i class="fa fa-check"></i><b>4.6</b> List Comprehensions</a></li>
+<li class="chapter" data-level="4.7" data-path="control-flow.html"><a href="control-flow.html#generators"><i class="fa fa-check"></i><b>4.7</b> Generators</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>5</b> Scripting</a><ul>
+<li class="chapter" data-level="5.1" data-path="scripting.html"><a href="scripting.html#imports"><i class="fa fa-check"></i><b>5.1</b> Imports</a></li>
+<li class="chapter" data-level="5.2" data-path="scripting.html"><a href="scripting.html#boilerplate"><i class="fa fa-check"></i><b>5.2</b> Boilerplate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html"><i class="fa fa-check"></i><b>6</b> Numpy (Numeric Python)</a><ul>
+<li class="chapter" data-level="6.1" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#numpy-arrays-1"><i class="fa fa-check"></i><b>6.1</b> Numpy arrays</a></li>
+<li class="chapter" data-level="6.2" data-path="numpy-numeric-python.html"><a href="numpy-numeric-python.html#two-dimensional-numpy-arrays"><i class="fa fa-check"></i><b>6.2</b> Two dimensional numpy arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="pandas.html"><a href="pandas.html"><i class="fa fa-check"></i><b>7</b> Pandas</a><ul>
+<li class="chapter" data-level="7.1" data-path="pandas.html"><a href="pandas.html#creation"><i class="fa fa-check"></i><b>7.1</b> Creation</a></li>
+<li class="chapter" data-level="7.2" data-path="pandas.html"><a href="pandas.html#subsetting"><i class="fa fa-check"></i><b>7.2</b> Subsetting</a></li>
+<li class="chapter" data-level="7.3" data-path="pandas.html"><a href="pandas.html#reading-in-chunks"><i class="fa fa-check"></i><b>7.3</b> Reading in chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualisation.html"><a href="visualisation.html"><i class="fa fa-check"></i><b>8</b> Visualisation</a><ul>
+<li class="chapter" data-level="8.1" data-path="visualisation.html"><a href="visualisation.html#matplotlib"><i class="fa fa-check"></i><b>8.1</b> Matplotlib</a></li>
+<li class="chapter" data-level="8.2" data-path="visualisation.html"><a href="visualisation.html#line-plot"><i class="fa fa-check"></i><b>8.2</b> Line Plot</a></li>
+<li class="chapter" data-level="8.3" data-path="visualisation.html"><a href="visualisation.html#scatter-plot"><i class="fa fa-check"></i><b>8.3</b> Scatter Plot</a></li>
+<li class="chapter" data-level="8.4" data-path="visualisation.html"><a href="visualisation.html#text"><i class="fa fa-check"></i><b>8.4</b> Text</a></li>
+<li class="chapter" data-level="8.5" data-path="visualisation.html"><a href="visualisation.html#histograms"><i class="fa fa-check"></i><b>8.5</b> Histograms</a></li>
+<li class="chapter" data-level="8.6" data-path="visualisation.html"><a href="visualisation.html#modifiers"><i class="fa fa-check"></i><b>8.6</b> Modifiers</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="visualisation.html"><a href="visualisation.html#scales"><i class="fa fa-check"></i><b>8.6.1</b> Scales</a></li>
+<li class="chapter" data-level="8.6.2" data-path="visualisation.html"><a href="visualisation.html#labels"><i class="fa fa-check"></i><b>8.6.2</b> Labels</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -161,10 +196,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="control-flow" class="section level1">
-<h1><span class="header-section-number">3</span> Control Flow</h1>
+<h1><span class="header-section-number">4</span> Control Flow</h1>
 <p>Bottom line up front, Python is weird about groupings. Instead of using braces and making things clear and explicit, Python enforces indentation as a way of grouping code. What this means if you have both spaces and tabs is unclear, but it’s certainly going to get confusing. Add to this Python’s mixed bag when it comes to putting function arguments in brackets and we’ve got a real mess.</p>
 <div id="if-statements" class="section level2">
-<h2><span class="header-section-number">3.1</span> If statements</h2>
+<h2><span class="header-section-number">4.1</span> If statements</h2>
 <p>The general syntax for an if statement is:</p>
 <pre><code>if condition :
     execute this
@@ -184,13 +219,13 @@ else :
     execute this</code></pre>
 </div>
 <div id="while-loop" class="section level2">
-<h2><span class="header-section-number">3.2</span> While loop</h2>
+<h2><span class="header-section-number">4.2</span> While loop</h2>
 <p>The general syntax for a while loop is:</p>
 <pre><code>while condition :
     expression</code></pre>
 </div>
 <div id="for-loop" class="section level2">
-<h2><span class="header-section-number">3.3</span> For loop</h2>
+<h2><span class="header-section-number">4.3</span> For loop</h2>
 <p>The general syntax for a for loop is:</p>
 <pre><code>for var in seq :
     expression</code></pre>
@@ -204,6 +239,156 @@ else :
 <pre><code>for lab, row in df.iterrows() :
     print(lab) # The row label
     print(row) # The pandas Series, i.e. a named list consisting of the row elements</code></pre>
+<p>To iterate through key:value pairs in a dictionary, use:</p>
+<pre><code>for key, val in dict.items() :
+  print(key) # The key
+  print(val) # The value</code></pre>
+</div>
+<div id="error-handling" class="section level2">
+<h2><span class="header-section-number">4.4</span> Error Handling</h2>
+<p>Error handling in Python seems to be based on the try-except model. You can use this to control execution flow conditional on the type of error raised, and you can raise your own errors using the <code>raise</code> keyword.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> sqrt(x) :
+    <span class="co">&quot;&quot;&quot;Returns the square root of a number.&quot;&quot;&quot;</span>
+    <span class="cf">try</span>:
+        <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> :
+            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&#39;x must be non-negative&#39;</span>)
+        <span class="cf">return</span> x <span class="op">**</span> <span class="fl">0.5</span>
+    <span class="cf">except</span> <span class="pp">TypeError</span>:   <span class="co"># This section will execute if there is a TypeError</span>
+        <span class="bu">print</span>(<span class="st">&#39;x must be an int or a float&#39;</span>)
+        
+<span class="bu">print</span>(sqrt(<span class="dv">4</span>))</code></pre></div>
+<pre><code>## 2.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(sqrt(<span class="st">&#39;4&#39;</span>))</code></pre></div>
+<pre><code>## x must be an int or a float
+## None</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(sqrt(<span class="op">-</span><span class="dv">4</span>))</code></pre></div>
+<pre><code>## ValueError: x must be non-negative
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+##   File &quot;&lt;string&gt;&quot;, line 5, in sqrt</code></pre>
+<p>Amongst all the printout, you can see that this has indeed raised a ValueError with the error message specified.</p>
+</div>
+<div id="iterators-and-iterables" class="section level2">
+<h2><span class="header-section-number">4.5</span> Iterators and Iterables</h2>
+<ul>
+<li>Examples include lists, strings, dictionaries, file connections</li>
+<li>They need to have an <code>iter()</code> method</li>
+<li>Applying <code>iter()</code> to an iterable creates an iterator</li>
+<li>Iterators need to have a <code>next()</code> method</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">word <span class="op">=</span> <span class="st">&quot;Dog&quot;</span>
+it <span class="op">=</span> <span class="bu">iter</span>(word)
+<span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## D</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## o</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## g</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## StopIteration: 
+## 
+## Detailed traceback: 
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</code></pre>
+<p>You can also use the “splat” operator to get all remaining elements.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">word <span class="op">=</span> <span class="st">&quot;Hello&quot;</span>
+it <span class="op">=</span> <span class="bu">iter</span>(word)
+<span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## H</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="op">*</span>it)</code></pre></div>
+<pre><code>## e l l o</code></pre>
+<div id="enumerate" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Enumerate</h3>
+<p>The <code>enumerate()</code> function can be used to return an iterator which gives two values, the <em>index</em> and the <em>value</em> of the underlying iterable.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">words <span class="op">=</span> [<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;World&quot;</span>, <span class="st">&quot;!!!&quot;</span>]
+<span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(words) :
+  <span class="bu">print</span>(i, x)</code></pre></div>
+<pre><code>## 0 Hello
+## 1 World
+## 2 !!!</code></pre>
+</div>
+<div id="zip" class="section level3">
+<h3><span class="header-section-number">4.5.2</span> Zip</h3>
+<p>The <code>zip()</code> function can be used to take two or more lists and “zip” them together into a single iterable.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">list1 <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]<span class="op">;</span> list2 <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>]<span class="op">;</span> list3 <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">23</span>]
+<span class="cf">for</span> a, b, c <span class="kw">in</span> <span class="bu">zip</span>(list1, list2, list3) :
+  <span class="bu">print</span>(a, b, c)</code></pre></div>
+<pre><code>## 0 10 20
+## 1 11 21
+## 2 12 22
+## 3 13 23</code></pre>
+<p>You can also use the <code>zip()</code> function to unzip, by using the splat operator.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">tuple1 <span class="op">=</span> (<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)<span class="op">;</span> tuple2 <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)<span class="op">;</span>
+z <span class="op">=</span> <span class="bu">zip</span>(tuple1, tuple2)
+result1, result2 <span class="op">=</span> <span class="bu">zip</span>(<span class="op">*</span>z)
+<span class="bu">print</span>(result1 <span class="op">==</span> tuple1)</code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(result2 <span class="op">==</span> tuple2)</code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+</div>
+<div id="list-comprehensions" class="section level2">
+<h2><span class="header-section-number">4.6</span> List Comprehensions</h2>
+<p>List comprehensions collapse for loops for building lists into a single line. You can write a list comprehension over any iterable. The general structure is:</p>
+<pre><code>&lt;result&gt; = [&lt;output expression&gt; for &lt;iterator variable&gt; in &lt;iterable&gt;]</code></pre>
+<p>Some examples:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">nums <span class="op">=</span> [<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">21</span>, <span class="dv">3</span>, <span class="dv">16</span>]
+new_nums <span class="op">=</span> [num <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> num <span class="kw">in</span> nums]
+<span class="bu">print</span>(new_nums)</code></pre></div>
+<pre><code>## [13, 9, 22, 4, 17]</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">result <span class="op">=</span> [num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)]
+<span class="bu">print</span>(result)</code></pre></div>
+<pre><code>## [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+<p>You can also use nested comprehensions by chaining multiple for statements together, but it starts to get a bit ugly.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">pairs <span class="op">=</span> [(num1, num2) <span class="cf">for</span> num1 <span class="kw">in</span> <span class="bu">range</span> (<span class="dv">0</span>,<span class="dv">2</span>) <span class="cf">for</span> num2 <span class="kw">in</span> <span class="bu">range</span> (<span class="dv">6</span>,<span class="dv">8</span>)]
+<span class="bu">print</span>(pairs)</code></pre></div>
+<pre><code>## [(0, 6), (0, 7), (1, 6), (1, 7)]</code></pre>
+<p>You can also use <em>conditionals</em> within list comprehensions. The general syntax is:</p>
+<pre><code>&lt;result&gt; = [&lt;output&gt; for &lt;ivar&gt; in &lt;iterable&gt; if &lt;condition&gt;]</code></pre>
+<p>For example, to make a list of the squares of only even numbers, you could use:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>([num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>])</code></pre></div>
+<pre><code>## [0, 4, 16, 36, 64]</code></pre>
+<p>You can also use conditionals on the output expression, with the general syntax</p>
+<pre><code>&lt;result&gt; = [&lt;true output&gt; if &lt;condition&gt; else &lt;false output&gt; for &lt;ivar&gt; in &lt;iterable&gt;]</code></pre>
+<p>For example, to square even numbers but not square odd numbers, you could use:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>([num <span class="op">**</span> <span class="dv">2</span> <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</code></pre></div>
+<pre><code>## [0, 1, 4, 3, 16, 5, 36, 7, 64, 9]</code></pre>
+<p>You can also create <em>dictionary</em> comprehensions using the same syntax.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Create a list of strings: fellowship</span>
+fellowship <span class="op">=</span> [<span class="st">&#39;frodo&#39;</span>, <span class="st">&#39;samwise&#39;</span>, <span class="st">&#39;merry&#39;</span>, <span class="st">&#39;aragorn&#39;</span>, <span class="st">&#39;legolas&#39;</span>, <span class="st">&#39;boromir&#39;</span>, <span class="st">&#39;gimli&#39;</span>]
+<span class="co"># Create dict comprehension: new_fellowship</span>
+new_fellowship <span class="op">=</span> {member:<span class="bu">len</span>(member) <span class="cf">for</span> member <span class="kw">in</span> fellowship}
+<span class="co"># Print the new list</span>
+<span class="bu">print</span>(new_fellowship)</code></pre></div>
+<pre><code>## {&#39;frodo&#39;: 5, &#39;samwise&#39;: 7, &#39;merry&#39;: 5, &#39;aragorn&#39;: 7, &#39;legolas&#39;: 7, &#39;boromir&#39;: 7, &#39;gimli&#39;: 5}</code></pre>
+</div>
+<div id="generators" class="section level2">
+<h2><span class="header-section-number">4.7</span> Generators</h2>
+<p>A generator is like a list comprehension, except that it does not store the list in memory. You can create a generator by replacing <code>[]</code> with <code>()</code> in any list comprehension statement. It behaves like any other iterator, except that the value is <em>lazily evaluated</em> - i.e. the elements of the sequence are only calculated at the time they’re needed.</p>
+<p>As a trivial example of why this could be useful, the following code will cause my Python session to crash:</p>
+<pre><code>[num for num in range(10**1000000)]</code></pre>
+<p>But I can comfortably create a generator which I can use as an iterable:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">it <span class="op">=</span> (num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span><span class="op">**</span><span class="dv">1000000</span>))
+<span class="bu">print</span>(it)</code></pre></div>
+<pre><code>## &lt;generator object &lt;genexpr&gt; at 0x1220f0518&gt;</code></pre>
+<p>You can also write generator functions which can include any arbitrary code. The only difference between normal functions and generator functions is that instead of using <code>return</code> to return all objects at once, a generator function will use <code>yield</code> multiple times throughout the execution of the function. When the generator function is iterated over, the function will run through the code until it hits <code>yield</code>, then it will return that value to the called (which most likely called <code>next()</code> on the iterator), and then pause execution. The next time <code>next()</code> is called, it will yield the next value, and so on until the generator function is exhausted (when the function finishes).</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> num_sequence(n) :
+  i <span class="op">=</span> <span class="dv">0</span>
+  <span class="cf">while</span> i <span class="op">&lt;</span> n :
+    <span class="cf">yield</span> i
+    i <span class="op">+=</span> <span class="dv">1</span>
+it <span class="op">=</span> num_sequence(<span class="dv">3</span>)
+<span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(<span class="bu">next</span>(it))</code></pre></div>
+<pre><code>## 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="cf">for</span> num <span class="kw">in</span> num_sequence(<span class="dv">3</span>) :
+  <span class="bu">print</span>(num)</code></pre></div>
+<pre><code>## 0
+## 1
+## 2</code></pre>
 
 </div>
 </div>
@@ -212,7 +397,7 @@ else :
           </div>
         </div>
       </div>
-<a href="syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="importing-and-exporting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="scripting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -243,7 +428,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/perrystephenson/py4ds/edit/master/02-controlflow.Rmd",
+"link": "https://github.com/perrystephenson/py4ds/edit/master/03-controlflow.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -7,11 +7,15 @@ Python), the `numpy.array()` function allows vectorised operations.
 
 By convention, numpy is normally imported as np.
 
+```{python}
+import numpy as np
+```
+
 ## Numpy arrays
 
 To create a numpy array:
   
-```{python}
+```{python numpy}
 import numpy as np
 temp = np.array([1,2,3,4])
 print(temp)
@@ -33,7 +37,7 @@ second level is the second dimension of the array, and so on. When working with
 a two dimensional array, this means that you can create a 2 row, 5 column numpy
 array using the following command:
 
-```{python}
+```{python np_2d}
 import numpy as np
 np_2d = np.array([[1, 2, 3, 4, 5 ],
 [6, 7, 8, 9, 10]])
@@ -44,6 +48,6 @@ To interrogate the properties of the array you can use methods. For example,
 you can get the dimensions of the array using `np_2d.shape` - this would be
 written as `dim(np_2d)` in R.
 
-```{python}
+```{python np_shape}
 print(np_2d.shape)
 ```

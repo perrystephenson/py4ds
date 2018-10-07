@@ -8,7 +8,7 @@ to provide DataFrames.
 
 To create a DataFrame manually:
   
-```{python}
+```{python pandas}
 import pandas as pd
 dict = {
   "country":    ['Brazil',   'Russia', 'India',     'China',   'South Africa'],
@@ -56,5 +56,20 @@ If you want to use an index, then you can do the same thing with lists of
 integers passed to the `iloc()` method (which stands for index-location). It
 seems like you probably need to chain these functions together if you want to
 have a mix of subsetting approaches.
+
+## Reading in chunks
+
+You can use the `chunksize` argument to read a CSV file in chunks, then iterate
+over the chunks in a loop. This can be useful when you're dealing with large
+amounts of data that won't fit in memory.
+
+```
+import pandas as pd
+result = []
+for chunk in pd.read_csv('data.csv', chunksize = 1000) :
+  result.append(sun(chunk['x']))
+total = sum(result)
+print(total)
+```
 
 

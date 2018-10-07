@@ -18,7 +18,7 @@ your script. This is similar to **R**, but very different to **C**.
 
 To see the type of an object in Python, use `type(var)`.
 
-```{python}
+```{python types}
 x = 0.5
 print(type(x))
 ```
@@ -43,7 +43,7 @@ The standard operators are pretty straightforward (`*`, `/`, `+`, `-`),
 exponentiation is `**` (i.e. `4**2`) instead of `^`. Assignment is `=` and 
 function arguments are also passed via `=`. Equality tests use `==`.
 
-```{python}
+```{python basic}
 print(2**2 == 4)
 print(2 == 3)
 ```
@@ -55,11 +55,26 @@ strings using the + operator - cool! Python does not automatically cast between
 strings and other types (booooooo) which means you have to cast it explicitly
 when you want to build error messages, turn strings into numeric types, etc.
 
-```{python}
+```{python strings_quotes}
 x = 0.75
 msg = 'The value of x is ' + str(x)
 print(msg)
 ```
+
+## Type Casting
+
+Python uses sensibly named functions to cast between different types, and does
+not do this automatically. For example, `print('Hello number ' + 3)` will not
+work, as you need to explicitly cast like this: `print('Hello number ' +
+str(3))`.
+
+The casting functions are named after the data types:
+
+* `int`
+* `str`
+* `float`
+* `bool`
+* etc
 
 ## Lists / Arrays / Columns / Vectors
 
@@ -71,6 +86,18 @@ have the same meaning as R (can contain multiple types, can contain other
 lists, etc), so it is just the notation that differs. There is no base
 equivalent to the atomic vector in Python - it seems that this functionality is
 provided by the **NumPy Array**.
+
+```{python list}
+my_list = ['1', 2, 3.0, 'd']
+print(my_list)
+```
+
+You can also put lists inside lists:
+
+```{python nest_list}
+my_nested_list = [["Hello", 1],["World", 2]]
+print(my_nested_list)
+```
 
 ## Indexing
 
@@ -98,7 +125,7 @@ the length of the vector (so that it will select the rest of the vector).
 
 Python lists can be joined using the + operator. 
 
-```{python}
+```{python strings}
 example = [0,1,2] + [3,4]
 print(example)
 ```
@@ -106,7 +133,7 @@ print(example)
 Deleting elements is a bit different - you need to use `del(var[3])` to remove
 an element from the list.
 
-```{python}
+```{python strings2}
 del(example[3])
 print(example)
 ```
@@ -122,14 +149,14 @@ for example, are copied by reference, which means that changing an element in a
 this you need to do something like y = list(x) or y = x[:] to explicitly copy
 all items from the list.
 
-```{python}
+```{python copy}
 x = [1,2,3,4]
 y = x
 y[2] = 5
 print(x)
 ```
 
-```{python}
+```{python copy_2}
 x = [1,2,3,4]
 y = list(x); y[2] = 5
 z = x[:]; z[2] = 5
@@ -182,18 +209,38 @@ Dictionaries don't really exist in **R**, because the dictionary functionality
 (named elements) is available in both atomic vectors and lists. To create a
 dictionary in **Python**, you can use the following syntax:
 
-```
+```{python dict}
 world = {"afghanistan":30.55, "albania":2.77, "algeria":39.21}
 ```
 
 You can also do nested dictionaries - the keys are somewhat limited (they can
 be any immutable data type) but the values can be dictionaries if you want.
 
+You can retrieve the keys from a dictionary using the **.keys()** method, e.g. 
+`world.keys()`. You can select elements from a dictionary using the key inside
+square brackets, e.g. `world['albania']`
+
+```{python dict_keys}
+print(world.keys())
+print(world['albania'])
+```
+
+In many ways, dictionaries are like named lists in R. You can add elements to a
+dictionary using `world['italy'] = 59.83` for example.
+
+You can also interrogate whether a key exists in a dictionary using the `in` 
+operator, which is like the `%in%` operator from R. For example:
+
+```{python dict_lgl}
+print('albania' in world)
+print('moon' in world)
+```
+
 ## Functions
 
 Functions are defined using the keyword def, like so:
 
-```{python}
+```{python def}
 def repeat(s, exclaim):
   """
   Returns the string 's' repeated 3 times.
@@ -217,6 +264,17 @@ Function arguments look to be specified and evaluated similarly to R - you name
 the arguments and you can give them default values in the definition statement.
 When using the function you can resolve arguments by name or by order (but you
 cannot mix the two approaches), and there is no partial matching.
+
+### Lambda functions
+
+These are just like anonymous functions in R - you can define them inline and
+don't necessarily need to provide a name. Useful to save typing, but also 
+useful in the `map()` and `functools.reduce()` functions.
+
+```{python lambda}
+my_glue_function = lambda a, b: a + ' ' + b + "!"
+print(my_glue_function("Hello", "World"))
+```
 
 ## Methods
 

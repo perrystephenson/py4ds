@@ -1,0 +1,285 @@
+# Control Flow
+
+Bottom line up front, Python is weird about groupings. Instead of using braces
+and making things clear and explicit, Python enforces indentation as a way of
+grouping code. What this means if you have both spaces and tabs is unclear, but
+it's certainly going to get confusing. Add to this Python's mixed bag when it
+comes to putting function arguments in brackets and we've got a real mess.
+
+## If statements
+
+The general syntax for an if statement is:
+
+```
+if condition :
+    execute this
+    and this because we're still indented
+execute this regardless because we've got no indent
+```
+The general syntax for an if else statement is:
+
+```
+if condition :
+    execute this
+else :
+    execute this
+```
+The general syntax for an else if statement is:
+
+```
+if condition :
+    execute this
+elif condition :
+    execute this
+else :
+    execute this
+```
+## While loop
+
+The general syntax for a while loop is:
+
+```
+while condition :
+    expression
+```
+
+## For loop
+
+The general syntax for a for loop is:
+
+```
+for var in seq :
+    expression
+```
+
+You can also do inline enumeration if you want to (to get access to the index
+as well as the value), but it's a bit flimsy and hard to understand because it
+only exists in the for loop syntax (so you can't easily debug how it works):
+
+```
+for index, var in enumerate(seq):
+    expression
+```
+
+You can also iterate along multiple columns in nested lists:
+
+```
+for room, area in house :
+    expression
+```
+
+To iterate through the rows of a pandas DataFrame, you can use the following:
+
+```
+for lab, row in df.iterrows() :
+    print(lab) # The row label
+    print(row) # The pandas Series, i.e. a named list consisting of the row elements
+```
+
+To iterate through key:value pairs in a dictionary, use:
+
+```
+for key, val in dict.items() :
+  print(key) # The key
+  print(val) # The value
+```
+    
+## Error Handling
+
+Error handling in Python seems to be based on the try-except model. You can use
+this to control execution flow conditional on the type of error raised, and you
+can raise your own errors using the `raise` keyword.
+
+```{python error_handling, error=TRUE}
+def sqrt(x) :
+    """Returns the square root of a number."""
+    try:
+        if x < 0 :
+            raise ValueError('x must be non-negative')
+        return x ** 0.5
+    except TypeError:   # This section will execute if there is a TypeError
+        print('x must be an int or a float')
+        
+print(sqrt(4))
+print(sqrt('4'))
+print(sqrt(-4))
+```
+
+Amongst all the printout, you can see that this has indeed raised a ValueError
+with the error message specified.
+
+## Iterators and Iterables
+
+* Examples include lists, strings, dictionaries, file connections
+* They need to have an `iter()` method
+* Applying `iter()` to an iterable creates an iterator
+* Iterators need to have a `next()` method
+
+```{python iterables1, error=TRUE}
+word = "Dog"
+it = iter(word)
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+```
+
+You can also use the "splat" operator to get all remaining elements.
+
+```{python iterables2}
+word = "Hello"
+it = iter(word)
+print(next(it))
+print(*it)
+```
+
+### Enumerate
+
+The `enumerate()` function can be used to return an iterator which gives two
+values, the *index* and the *value* of the underlying iterable.
+
+```{python enumerate}
+words = ["Hello", "World", "!!!"]
+for i, x in enumerate(words) :
+  print(i, x)
+```
+
+### Zip
+
+The `zip()` function can be used to take two or more lists and "zip" them
+together into a single iterable.
+
+```{python zip}
+list1 = [0,1,2,3]; list2 = [10,11,12,13]; list3 = [20,21,22,23]
+for a, b, c in zip(list1, list2, list3) :
+  print(a, b, c)
+```
+
+You can also use the `zip()` function to unzip, by using the splat operator.
+
+```{python unzip}
+tuple1 = (0,1,2,3); tuple2 = (10,11,12,13);
+z = zip(tuple1, tuple2)
+
+result1, result2 = zip(*z)
+
+print(result1 == tuple1)
+print(result2 == tuple2)
+```
+
+## List Comprehensions
+
+List comprehensions collapse for loops for building lists into a single line.
+You can write a list comprehension over any iterable. The general structure is:
+
+```
+<result> = [<output expression> for <iterator variable> in <iterable>]
+```
+
+Some examples:
+
+```{python list_comp1}
+nums = [12, 8, 21, 3, 16]
+new_nums = [num + 1 for num in nums]
+print(new_nums)
+```
+
+```{python list_comp2}
+result = [num for num in range(11)]
+print(result)
+```
+
+You can also use nested comprehensions by chaining multiple for statements
+together, but it starts to get a bit ugly.
+
+```{python list_nested}
+pairs = [(num1, num2) for num1 in range (0,2) for num2 in range (6,8)]
+print(pairs)
+```
+
+You can also use *conditionals* within list comprehensions. The general syntax
+is:
+
+```
+<result> = [<output> for <ivar> in <iterable> if <condition>]
+```
+
+For example, to make a list of the squares of only even numbers, you could use:
+
+```{python list_cond}
+print([num ** 2 for num in range(10) if num % 2 == 0])
+```
+
+You can also use conditionals on the output expression, with the general syntax
+
+```
+<result> = [<true output> if <condition> else <false output> for <ivar> in <iterable>]
+```
+
+For example, to square even numbers but not square odd numbers, you could use:
+
+```{python list_cond2}
+print([num ** 2 if num % 2 == 0 else num for num in range(10)])
+```
+
+You can also create *dictionary* comprehensions using the same syntax.
+
+```{python dict_comp}
+# Create a list of strings: fellowship
+fellowship = ['frodo', 'samwise', 'merry', 'aragorn', 'legolas', 'boromir', 'gimli']
+
+# Create dict comprehension: new_fellowship
+new_fellowship = {member:len(member) for member in fellowship}
+
+# Print the new list
+print(new_fellowship)
+```
+
+## Generators
+
+A generator is like a list comprehension, except that it does not store the 
+list in memory. You can create a generator by replacing `[]` with `()` in any
+list comprehension statement. It behaves like any other iterator, except that
+the value is *lazily evaluated* - i.e. the elements of the sequence are only 
+calculated at the time they're needed.
+
+As a trivial example of why this could be useful, the following code will cause
+my Python session to crash:
+
+```
+[num for num in range(10**1000000)]
+```
+
+But I can comfortably create a generator which I can use as an iterable:
+
+```{python}
+it = (num for num in range(10**1000000))
+print(it)
+```
+
+You can also write generator functions which can include any arbitrary code. 
+The only difference between normal functions and generator functions is that
+instead of using `return` to return all objects at once, a generator function 
+will use `yield` multiple times throughout the execution of the function. When
+the generator function is iterated over, the function will run through the code
+until it hits `yield`, then it will return that value to the called (which most
+likely called `next()` on the iterator), and then pause execution. The next 
+time `next()` is called, it will yield the next value, and so on until the 
+generator function is exhausted (when the function finishes).
+
+```{python}
+def num_sequence(n) :
+  i = 0
+  while i < n :
+    yield i
+    i += 1
+
+it = num_sequence(3)
+print(next(it))
+print(next(it))
+print(next(it))
+
+for num in num_sequence(3) :
+  print(num)
+```
+

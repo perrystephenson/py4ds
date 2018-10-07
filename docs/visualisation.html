@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="numpy-numeric-python.html">
-<link rel="next" href="visualisation.html">
+<link rel="prev" href="pandas.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -195,48 +195,82 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pandas" class="section level1">
-<h1><span class="header-section-number">7</span> Pandas</h1>
-<p>The pandas package was written by Wes McKinney (who seems to be <em>Hadley Wickham’s</em> counterpart for <strong>Python</strong>) and builds on top of the numpy package to provide DataFrames.</p>
-<div id="creation" class="section level2">
-<h2><span class="header-section-number">7.1</span> Creation</h2>
-<p>To create a DataFrame manually:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> pd
-<span class="bu">dict</span> <span class="op">=</span> {
-  <span class="st">&quot;country&quot;</span>:    [<span class="st">&#39;Brazil&#39;</span>,   <span class="st">&#39;Russia&#39;</span>, <span class="st">&#39;India&#39;</span>,     <span class="st">&#39;China&#39;</span>,   <span class="st">&#39;South Africa&#39;</span>],
-  <span class="st">&quot;capital&quot;</span>:    [<span class="st">&#39;Brasilia&#39;</span>, <span class="st">&#39;Moscow&#39;</span>, <span class="st">&#39;New Delhi&#39;</span>, <span class="st">&#39;Beijing&#39;</span>, <span class="st">&#39;Pretoria&#39;</span>    ],
-  <span class="st">&quot;area&quot;</span>:       [ <span class="fl">8.516</span>,      <span class="fl">17.10</span>,    <span class="fl">3.286</span>,       <span class="fl">9.597</span>,     <span class="fl">1.221</span>        ],
-  <span class="st">&quot;population&quot;</span>: [ <span class="fl">200.4</span>,      <span class="fl">143.5</span>,    <span class="dv">1252</span>,        <span class="dv">1357</span>,      <span class="fl">52.98</span>        ]}
-df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>)
-df.index      <span class="op">=</span> [<span class="st">&#39;BR&#39;</span>,       <span class="st">&#39;RU&#39;</span>,     <span class="st">&#39;IN&#39;</span>,        <span class="st">&#39;CH&#39;</span>,      <span class="st">&#39;SA&#39;</span>          ]
-<span class="bu">print</span>(df)</code></pre></div>
-<pre><code>##          country    capital    area  population
-## BR        Brazil   Brasilia   8.516      200.40
-## RU        Russia     Moscow  17.100      143.50
-## IN         India  New Delhi   3.286     1252.00
-## CH         China    Beijing   9.597     1357.00
-## SA  South Africa   Pretoria   1.221       52.98</code></pre>
-<p>Alternatively, if you have data in a CSV file you can import it using:</p>
-<pre><code>df = pd.read_csv(&#39;&lt;path&gt;&#39;)                # If there are no column names
-df = pd.read_csv(&#39;&lt;path&gt;&#39;, index_col = 0) # If there are column names</code></pre>
+<div id="visualisation" class="section level1">
+<h1><span class="header-section-number">8</span> Visualisation</h1>
+<p>Visualisation in Python is a bit of a mixed bag, with techniques ranging all the way from “just as bad as base R” to “could one day get close to ggplot2”.</p>
+<div id="matplotlib" class="section level2">
+<h2><span class="header-section-number">8.1</span> Matplotlib</h2>
+<p><strong>matplotlib</strong> has a sub-package called <strong>pyplot</strong>, and you will conventionally import this package as <strong>plt</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</code></pre></div>
+<p>When building plots with Matplotlib, you need to explicitly call <code>plt.show()</code> to print the plot to the console. If you want to clear the plot and start again you can use <code>plt.clf()</code>.</p>
 </div>
-<div id="subsetting" class="section level2">
-<h2><span class="header-section-number">7.2</span> Subsetting</h2>
-<p>To select a column in pandas, use <code>df['country']</code>. This returns a “pandas Series” object, which is like a 1D element of a data frame. If you want to get a data frame back instead of a series, use <code>df[['country']]</code>. This is the opposite of <strong>R</strong>, where the <code>[[]]</code> is used to drill down further than <code>[]</code>. The reason for this is that <code>[]</code> defines a list in <strong>Python</strong>, so you’re really calling <code>df[&lt;subset&gt;]</code> where <code>&lt;subset&gt;</code> is a list of length 1. In <strong>R</strong>, the <code>[[]]</code> subset operator is actually a function, hence the differing behaviours. This means that subsetting for multiple columns in Python doesn’t take too much writing: <code>df[['country', 'capital']]</code>.</p>
-<p>Interestingly, and perhaps confusingly, if you provide a slice (range) to <code>df[]</code> then you will be subsetting on rows, not columns! Using <code>df[1:4]</code> selects the 2nd through 4th rows of the data frame.</p>
-<p>If you want to do anything more complex than this, it starts getting a bit weird, and you have to use the <code>loc()</code> method (which stands for “location”). To pull out a named row, you need to use the <code>df.loc['RU']</code> syntax (which returns a Series object), or <code>df.loc[['RU']]</code> (which returns a DataFrame). You can also select multiple rows this way: <code>df.loc[['RU', 'IN', 'CH']]</code>. You can then extend this to subset on columns as well, which starts to look a bit more like <strong>R</strong> (and like the 2D numpy array): <code>df.loc[['RU', 'IN', 'CH'], ['country', 'capital']]</code>.</p>
-<p>If you want to use an index, then you can do the same thing with lists of integers passed to the <code>iloc()</code> method (which stands for index-location). It seems like you probably need to chain these functions together if you want to have a mix of subsetting approaches.</p>
+<div id="line-plot" class="section level2">
+<h2><span class="header-section-number">8.2</span> Line Plot</h2>
+<p>For a simple line plot, you can use <code>plt.plot(x, y)</code> where <code>x</code> and <code>y</code> are the arrays/lists corresponding to the data points for the <strong>x</strong> and <strong>y</strong> axes.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+x_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]
+y_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">25</span>,<span class="dv">36</span>,<span class="dv">49</span>,<span class="dv">64</span>]
+plt.plot(x_val, y_val)
+plt.show()</code></pre></div>
+<p><img src="py4ds_files/figure-html/mpl_show-1.png" width="672" /></p>
 </div>
-<div id="reading-in-chunks" class="section level2">
-<h2><span class="header-section-number">7.3</span> Reading in chunks</h2>
-<p>You can use the <code>chunksize</code> argument to read a CSV file in chunks, then iterate over the chunks in a loop. This can be useful when you’re dealing with large amounts of data that won’t fit in memory.</p>
-<pre><code>import pandas as pd
-result = []
-for chunk in pd.read_csv(&#39;data.csv&#39;, chunksize = 1000) :
-  result.append(sun(chunk[&#39;x&#39;]))
-total = sum(result)
-print(total)</code></pre>
+<div id="scatter-plot" class="section level2">
+<h2><span class="header-section-number">8.3</span> Scatter Plot</h2>
+<p>Scatter plots are basically the same syntax as line plots, but with use the method <code>plt.scatter()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+x_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]
+y_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">25</span>,<span class="dv">36</span>,<span class="dv">49</span>,<span class="dv">64</span>]
+plt.scatter(x_val, y_val)
+plt.show()</code></pre></div>
+<p><img src="py4ds_files/figure-html/mpl_scatter-1.png" width="672" /></p>
+<p>Additional arguments include:</p>
+<ul>
+<li><code>s</code> which gives the size of each point</li>
+<li><code>c</code> which gives the colour of each point</li>
+<li><code>alpha</code> which gives the opacity of each point</li>
+</ul>
+</div>
+<div id="text" class="section level2">
+<h2><span class="header-section-number">8.4</span> Text</h2>
+<p>You can add text to plots using the <code>plt.text()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+x_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]
+y_val <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">25</span>,<span class="dv">36</span>,<span class="dv">49</span>,<span class="dv">64</span>]
+plt.scatter(x_val, y_val)
+plt.text(<span class="dv">0</span>, <span class="dv">30</span>, <span class="st">&quot;Hello World!&quot;</span>)
+plt.show()</code></pre></div>
+<p><img src="py4ds_files/figure-html/mpl_text-1.png" width="672" /></p>
+</div>
+<div id="histograms" class="section level2">
+<h2><span class="header-section-number">8.5</span> Histograms</h2>
+<p>Histograms are fairly straight-forward too: <code>plt.hist(x, bins)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+x <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">25</span>,<span class="dv">36</span>,<span class="dv">49</span>,<span class="dv">64</span>]
+plt.hist(x, <span class="dv">5</span>)
+plt.show()</code></pre></div>
+<p><img src="py4ds_files/figure-html/mpl_hist-1.png" width="672" /></p>
+</div>
+<div id="modifiers" class="section level2">
+<h2><span class="header-section-number">8.6</span> Modifiers</h2>
+<div id="scales" class="section level3">
+<h3><span class="header-section-number">8.6.1</span> Scales</h3>
+<ul>
+<li><code>plt.xscale('log')</code> converts the x scale to a logarithmic scale</li>
+<li><code>plt.yscale('log')</code></li>
+<li><code>plt.grid(True)</code> displays the grid on the plot</li>
+<li><code>plt.yticks([0,1,2,3], [&quot;0&quot;, &quot;1B&quot;, &quot;2B&quot;, &quot;3B&quot;])</code> sets the Y axis ticks to the values given in the first argument, and sets the displayed strings on those ticks based on the second argument</li>
+<li><code>plt.xticks([1000, 10000, 100000], ['1k', '10k', '100k'])</code></li>
+</ul>
+</div>
+<div id="labels" class="section level3">
+<h3><span class="header-section-number">8.6.2</span> Labels</h3>
+<ul>
+<li><code>plt.xlabel('Year')</code> sets the X axis label to “Year”</li>
+<li><code>plt.ylabel('Population')</code></li>
+<li><code>plt.title('World Population Projections')</code> sets the title of the plot</li>
+</ul>
 
+</div>
 </div>
 </div>
             </section>
@@ -244,8 +278,8 @@ print(total)</code></pre>
           </div>
         </div>
       </div>
-<a href="numpy-numeric-python.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pandas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -275,7 +309,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/perrystephenson/py4ds/edit/master/06-pandas.Rmd",
+"link": "https://github.com/perrystephenson/py4ds/edit/master/07-visualisation.Rmd",
 "text": "Edit"
 },
 "download": null,
