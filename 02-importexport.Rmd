@@ -80,6 +80,39 @@ Pandas has some handy helpers, including:
 
 ## Relational Databases
 
+### Using SQLAlchemy
+
+```
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///Northwind.sqlite')
+```
+You can retrieve the table names from the database using the `.table_names()` method of the `engine` object.
+
+To query the database using the engine:
+
+```
+con = engine.connect()
+rs = con.execute('select * from Album')
+df = pd.DataFrame(rs.fetchall())
+df.columns = rs.keys()
+con.close()
+```
+
+You can also do this using a context manager:
+
+```
+with engine.connect() as con:
+    rs = con.execute('select LastName, Title from Employee')
+    df = pd.DataFrame(rs.fetchmany(size = 3))
+    df.columns = rs.keys()
+```
+
+You can also use this engine directly with Pandas:
+
+```
+df = pd.read_sql_query(‘select * from Orders’, engine)
+```
+
 ## Exotic Filetypes
 
 ### Excel
@@ -146,4 +179,153 @@ import os
 wd = os.getcwd()
 os.listdir(wd)
 ```
+
+## Retrieving files from the web
+
+```
+from urllib.request import urlretrieve
+url = 'https://s3.amazonaws.com/assets.datacamp.com/production/course_1606/datasets/winequality-red.csv'
+dat = urlretrieve(url, “winequality-red.csv”)
+```
+
+Pandas can also do this for you without saving the intermediate file. This works with all of the Pandas functions including read_csv and read_excel
+
+```
+df = pd.read_csv(url, sep = ';')
+```
+
+### Working with HTTP requests directly
+
+```
+from urllib.request import urlopen, Request
+url = "http://www.datacamp.com/teach/documentation"
+request = Request(url)
+response = urlopen(request)
+print(type(response))
+html = response.read()
+response.close()
+```
+
+### Using the requests package
+
+The requests package is the equivalent of R’s httr package, and is the most popular Python package for working with HTTP requests.
+
+```
+# Import package
+import requests
+
+# Specify the url: url
+url = "http://www.datacamp.com/teach/documentation"
+
+# Packages the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extract the response: text
+text = r.text
+
+# Print the html
+print(text)
+```
+
+## Parsing HTML 
+
+You can parse HTML using the BeautifulSoup package.
+
+```
+# Import packages
+import requests
+from bs4 import BeautifulSoup
+
+# Specify url: url
+url = 'https://www.python.org/~guido/'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Extracts the response as html: html_doc
+html_doc = r.text
+
+# Create a BeautifulSoup object from the HTML: soup
+soup = BeautifulSoup(html_doc)
+
+# Prettify the BeautifulSoup object: pretty_soup
+pretty_soup = soup.prettify()
+
+# Print the response
+print(pretty_soup)
+```
+
+You can also parse the tag tree with the BeautifulSoup object
+
+```
+# Get the title of Guido's webpage: guido_title
+guido_title = soup.title
+
+# Print the title of Guido's webpage to the shell
+print(guido_title)
+
+# Get Guido's text: guido_text
+guido_text = soup.get_text()
+
+# Print Guido's text to the shell
+print(guido_text)
+
+# Find all 'a' tags (which define hyperlinks): a_tags
+a_tags = soup.find_all('a')
+
+# Print the URLs to the shell
+for link in a_tags:
+    print(link.get('href'))
+```
+
+## Working with JSON
+
+```
+import json
+
+# Load JSON: json_data
+with open("a_movie.json") as json_file:
+    json_data = json.load(json_file)
+
+# Print each key-value pair in json_data
+for k in json_data.keys():
+    print(k + ': ', json_data[k])
+
+```
+
+## Working with APIs
+
+You can query APIs directly with the requests package
+
+```
+# Import requests package
+import requests
+
+# Assign URL to variable: url
+url = 'http://www.omdbapi.com/?apikey=ff21610b&t=the+social+network'
+
+# Package the request, send the request and catch the response: r
+r = requests.get(url)
+
+# Print the text of the response
+print(r.text)
+```
+
+You can pull out the JSON directly from the object using the `.json()` method:
+
+```
+# Decode the JSON data into a dictionary: json_data
+json_data = r.json()
+
+# Print each key-value pair in json_data
+for k in json_data.keys():
+    print(k + ': ', json_data[k])
+```
+
+You can parse multiple levels of nested JSON easily:
+
+```
+json_data['query']['pages']['24768']['extract']
+```
+
 
