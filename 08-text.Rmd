@@ -1,0 +1,28 @@
+# Text
+
+## Regular Expressions (regex)
+
+Regular Expressions are provided by the **re** package, which is bundled with
+most Python distributions.
+
+To use this package, you need to "compile" your regex using the `re.compile()`
+function then calling the methods from the returned object.
+
+```{python text1}
+# Import the regular expression module
+import re
+
+# Compile the pattern: prog
+prog = re.compile('\d{3}-\d{3}-\d{4}')
+
+# See if the pattern matches
+result = prog.match('123-456-7890')
+print(bool(result))
+
+# See if the pattern matches
+result2 = prog.match('1123-456-7890')
+print(bool(result2))
+```
+
+You can also pass the pattern into `re.match()` directly, but it seems like 
+this compilation thing will be useful later on.

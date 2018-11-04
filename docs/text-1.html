@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="syntax.html">
-<link rel="next" href="control-flow.html">
+<link rel="prev" href="visualisation.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -220,258 +220,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="importing-and-exporting" class="section level1">
-<h1><span class="header-section-number">3</span> Importing and Exporting</h1>
-<div id="opening-text-files" class="section level2">
-<h2><span class="header-section-number">3.1</span> Opening Text Files</h2>
-<div id="plain-text" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Plain Text</h3>
-<p>These are the easiest files to open.</p>
-<pre><code>file = open(&#39;huck_finn.txt&#39;, mode=&#39;r&#39;) # &#39;r&#39; is to read
-text = file.read()
-file.close()</code></pre>
-<p>The <code>.read()</code> method reads the entire file. You can also use <code>.readline()</code> which reads a line at a time.</p>
-<p>You can also manage files using a “context manager”:</p>
-<pre><code>with open(&#39;huck_finn.txt&#39;, mode=&#39;r&#39;) as file :
-  print(file.read())</code></pre>
-<p>This has the advantage that it doesn’t require you to close the connection at the end of the script.</p>
-</div>
-<div id="tabular-data" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Tabular Data</h3>
-<div id="numpy-arrays" class="section level4">
-<h4><span class="header-section-number">3.1.2.1</span> NumPy arrays</h4>
-<pre><code>import numpy as np
-data = np.loadtxt(&#39;MNIST.txt&#39;, delimiter=&#39;,&#39;)</code></pre>
-<p>Some additional useful arguments include:</p>
-<ul>
-<li><code>skiprows</code> - set to an integer (typically 1) to skip header rows</li>
-<li><code>usecols</code> - pass a list of integers (e.g. <code>usecols=[0,2]</code>) to select specified columns</li>
-<li><code>dtype</code> - numpy arrays must all be a single data type, so this lets you cast everything to a type (for example <code>dtype=str</code>)</li>
-</ul>
-<p>You can also load data with multiple data types using <code>np.genfromtxt()</code>, and if you pass the <code>dtype=None</code> argument then it will automatically detect column types for you.</p>
-<pre><code>data = np.genfromtxt(&#39;titanic.csv&#39;, delimiter=&#39;,&#39;, names=True, dtype=None)</code></pre>
-<p>When you do this, the result is a <strong>structured array</strong> rather than a 2d numpy array. This isn’t ideal, which is why <strong>pandas</strong> exists. Also note that the function <code>np.recfromcsv()</code> does the same as <code>np.genfromtxt()</code> except that it sets <code>dtype=None</code>, <code>delimiter=','</code> and <code>names=True</code> by default - handy!</p>
-</div>
-<div id="pandas-dataframes" class="section level4">
-<h4><span class="header-section-number">3.1.2.2</span> Pandas DataFrames</h4>
-<p>These are the standard for almost all data work in Python. The Pandas chapter will include more information about how to work with DataFrames in Pandas.</p>
-<pre><code>import pandas as pd
-data = pd.read_csv(&#39;winequality-red.csv&#39;)</code></pre>
-<p>Key options include:</p>
-<ul>
-<li><code>sep</code> - delimiter character</li>
-<li><code>nrows</code> - specify the number of rows to read</li>
-<li><code>header</code> - set to <code>None</code> (not 0!) if your data doesn’t have a header row</li>
-<li><code>na_values</code> - strings to treat as missing values</li>
-</ul>
-<p>Pandas has some handy helpers, including:</p>
-<ul>
-<li><code>.head()</code> - shows the top 5 rows</li>
-<li>`<code>.values</code> - returns a numpy array</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="relational-databases" class="section level2">
-<h2><span class="header-section-number">3.2</span> Relational Databases</h2>
-<div id="using-sqlalchemy" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Using SQLAlchemy</h3>
-<pre><code>from sqlalchemy import create_engine
-engine = create_engine(&#39;sqlite:///Northwind.sqlite&#39;)</code></pre>
-<p>You can retrieve the table names from the database using the <code>.table_names()</code> method of the <code>engine</code> object.</p>
-<p>To query the database using the engine:</p>
-<pre><code>con = engine.connect()
-rs = con.execute(&#39;select * from Album&#39;)
-df = pd.DataFrame(rs.fetchall())
-df.columns = rs.keys()
-con.close()</code></pre>
-<p>You can also do this using a context manager:</p>
-<pre><code>with engine.connect() as con:
-    rs = con.execute(&#39;select LastName, Title from Employee&#39;)
-    df = pd.DataFrame(rs.fetchmany(size = 3))
-    df.columns = rs.keys()</code></pre>
-<p>You can also use this engine directly with Pandas:</p>
-<pre><code>df = pd.read_sql_query(‘select * from Orders’, engine)</code></pre>
-</div>
-</div>
-<div id="exotic-filetypes" class="section level2">
-<h2><span class="header-section-number">3.3</span> Exotic Filetypes</h2>
-<div id="excel" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Excel</h3>
-<pre><code>import pandas as pd
-data = pd.ExcelFile(&#39;urbanpop.xlsx&#39;)
-print(data.sheet_names)
-df1 = data.parse(&#39;1960-1966&#39;) # sheet name as string, or index as float</code></pre>
-<p>Key options include:</p>
-<ul>
-<li><code>skiprows</code> - indexes of rows to skip - must be a list (zero indexed!)</li>
-<li><code>names</code> - can be used to provide (or override) the row names</li>
-<li><code>parse_cols</code> - can be used to specify which columns to import</li>
-</ul>
-</div>
-<div id="pickle-serialised" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Pickle (serialised)</h3>
-<pre><code>import pickle
-with open(&#39;data.pkl&#39;, &#39;rb&#39;) as file:
-    d = pickle.load(file)</code></pre>
-</div>
-<div id="hdf5" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> HDF5</h3>
-<p>HDF5 stands for Hierarchical Data Format 5. It’s the standard for storing large quantities of numerical data, and can scale to exabytes.</p>
-<pre><code>import h5py
-data = h5py.File(&#39;LIGO_data.hdf5&#39;, &#39;r&#39;) # &#39;r&#39; is to read</code></pre>
-<p>The file can look like a dict, and you can explore it using the same techniques:</p>
-<pre><code>for key in data.keys() :
-  print(key)</code></pre>
-<p>Because it is hierarchical, you can drill down further to find out what is there:</p>
-<pre><code>for key in data[&#39;meta&#39;].keys() :
-  print(key)</code></pre>
-<p>You can grab values using the <code>.value</code> attribute:</p>
-<pre><code>strain = data[&#39;strain&#39;][&#39;Strain&#39;].value</code></pre>
-</div>
-</div>
-<div id="working-with-the-file-system" class="section level2">
-<h2><span class="header-section-number">3.4</span> Working with the file system</h2>
-<p>You can programmatically interrogate the file system using the <strong>os</strong> package.</p>
-<pre><code>import os
-wd = os.getcwd()
-os.listdir(wd)</code></pre>
-<p>You can also use the <code>glob</code> package to find files from the file system:</p>
-<pre><code># Import necessary modules
-import pandas as pd
-import glob
-
-# Write the pattern: pattern
-pattern = &#39;*.csv&#39;
-
-# Save all file matches: csv_files
-csv_files = glob.glob(pattern)
-
-# Print the file names
-print(csv_files)
-
-# Load the second file into a DataFrame: csv2
-csv2 = pd.read_csv(csv_files[1])
-
-# Print the head of csv2
-print(csv2.head())</code></pre>
-</div>
-<div id="retrieving-files-from-the-web" class="section level2">
-<h2><span class="header-section-number">3.5</span> Retrieving files from the web</h2>
-<pre><code>from urllib.request import urlretrieve
-url = &#39;https://s3.amazonaws.com/assets.datacamp.com/production/course_1606/datasets/winequality-red.csv&#39;
-dat = urlretrieve(url, “winequality-red.csv”)</code></pre>
-<p>Pandas can also do this for you without saving the intermediate file. This works with all of the Pandas functions including read_csv and read_excel</p>
-<pre><code>df = pd.read_csv(url, sep = &#39;;&#39;)</code></pre>
-<div id="working-with-http-requests-directly" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Working with HTTP requests directly</h3>
-<pre><code>from urllib.request import urlopen, Request
-url = &quot;http://www.datacamp.com/teach/documentation&quot;
-request = Request(url)
-response = urlopen(request)
-print(type(response))
-html = response.read()
-response.close()</code></pre>
-</div>
-<div id="using-the-requests-package" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> Using the requests package</h3>
-<p>The requests package is the equivalent of R’s httr package, and is the most popular Python package for working with HTTP requests.</p>
-<pre><code># Import package
-import requests
-
-# Specify the url: url
-url = &quot;http://www.datacamp.com/teach/documentation&quot;
-
-# Packages the request, send the request and catch the response: r
-r = requests.get(url)
-
-# Extract the response: text
-text = r.text
-
-# Print the html
-print(text)</code></pre>
-</div>
-</div>
-<div id="parsing-html" class="section level2">
-<h2><span class="header-section-number">3.6</span> Parsing HTML</h2>
-<p>You can parse HTML using the BeautifulSoup package.</p>
-<pre><code># Import packages
-import requests
-from bs4 import BeautifulSoup
-
-# Specify url: url
-url = &#39;https://www.python.org/~guido/&#39;
-
-# Package the request, send the request and catch the response: r
-r = requests.get(url)
-
-# Extracts the response as html: html_doc
-html_doc = r.text
-
-# Create a BeautifulSoup object from the HTML: soup
-soup = BeautifulSoup(html_doc)
-
-# Prettify the BeautifulSoup object: pretty_soup
-pretty_soup = soup.prettify()
-
-# Print the response
-print(pretty_soup)</code></pre>
-<p>You can also parse the tag tree with the BeautifulSoup object</p>
-<pre><code># Get the title of Guido&#39;s webpage: guido_title
-guido_title = soup.title
-
-# Print the title of Guido&#39;s webpage to the shell
-print(guido_title)
-
-# Get Guido&#39;s text: guido_text
-guido_text = soup.get_text()
-
-# Print Guido&#39;s text to the shell
-print(guido_text)
-
-# Find all &#39;a&#39; tags (which define hyperlinks): a_tags
-a_tags = soup.find_all(&#39;a&#39;)
-
-# Print the URLs to the shell
-for link in a_tags:
-    print(link.get(&#39;href&#39;))</code></pre>
-</div>
-<div id="working-with-json" class="section level2">
-<h2><span class="header-section-number">3.7</span> Working with JSON</h2>
-<pre><code>import json
-
-# Load JSON: json_data
-with open(&quot;a_movie.json&quot;) as json_file:
-    json_data = json.load(json_file)
-
-# Print each key-value pair in json_data
-for k in json_data.keys():
-    print(k + &#39;: &#39;, json_data[k])
-</code></pre>
-</div>
-<div id="working-with-apis" class="section level2">
-<h2><span class="header-section-number">3.8</span> Working with APIs</h2>
-<p>You can query APIs directly with the requests package</p>
-<pre><code># Import requests package
-import requests
-
-# Assign URL to variable: url
-url = &#39;http://www.omdbapi.com/?apikey=ff21610b&amp;t=the+social+network&#39;
-
-# Package the request, send the request and catch the response: r
-r = requests.get(url)
-
-# Print the text of the response
-print(r.text)</code></pre>
-<p>You can pull out the JSON directly from the object using the <code>.json()</code> method:</p>
-<pre><code># Decode the JSON data into a dictionary: json_data
-json_data = r.json()
-
-# Print each key-value pair in json_data
-for k in json_data.keys():
-    print(k + &#39;: &#39;, json_data[k])</code></pre>
-<p>You can parse multiple levels of nested JSON easily:</p>
-<pre><code>json_data[&#39;query&#39;][&#39;pages&#39;][&#39;24768&#39;][&#39;extract&#39;]</code></pre>
+<div id="text-1" class="section level1">
+<h1><span class="header-section-number">9</span> Text</h1>
+<div id="regular-expressions-regex" class="section level2">
+<h2><span class="header-section-number">9.1</span> Regular Expressions (regex)</h2>
+<p>Regular Expressions are provided by the <strong>re</strong> package, which is bundled with most Python distributions.</p>
+<p>To use this package, you need to “compile” your regex using the <code>re.compile()</code> function then calling the methods from the returned object.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Import the regular expression module</span>
+<span class="im">import</span> re
+<span class="co"># Compile the pattern: prog</span>
+prog <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">&#39;\d</span><span class="sc">{3}</span><span class="st">-\d</span><span class="sc">{3}</span><span class="st">-\d</span><span class="sc">{4}</span><span class="st">&#39;</span>)
+<span class="co"># See if the pattern matches</span>
+result <span class="op">=</span> prog.match(<span class="st">&#39;123-456-7890&#39;</span>)
+<span class="bu">print</span>(<span class="bu">bool</span>(result))
+<span class="co"># See if the pattern matches</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">result2 <span class="op">=</span> prog.match(<span class="st">&#39;1123-456-7890&#39;</span>)
+<span class="bu">print</span>(<span class="bu">bool</span>(result2))</code></pre></div>
+<pre><code>## False</code></pre>
+<p>You can also pass the pattern into <code>re.match()</code> directly, but it seems like this compilation thing will be useful later on.</p>
 
 </div>
 </div>
@@ -480,8 +247,8 @@ for k in json_data.keys():
           </div>
         </div>
       </div>
-<a href="syntax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="control-flow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="visualisation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -511,7 +278,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/perrystephenson/py4ds/edit/master/02-importexport.Rmd",
+"link": "https://github.com/perrystephenson/py4ds/edit/master/08-text.Rmd",
 "text": "Edit"
 },
 "download": null,
